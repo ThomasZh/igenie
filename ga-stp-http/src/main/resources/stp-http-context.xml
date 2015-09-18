@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:tx="http://www.springframework.org/schema/tx" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<import resource="application-config.xml" />
+	<!-- <context:annotation-config /> -->
+	<context:component-scan base-package="com.oct.ga.stp.http" />
+	<context:property-placeholder location="classpath:stp-http.properties" />
+	<bean class="org.restexpress.RestExpress">
+		<property name="name" ref="${restExpress.name}" />
+		<property name="port" ref="${restExpress.port}" />
+		<property name="ioThreadCount" ref="${restExpress.ioThreadCount}" />
+		<property name="executorThreadCount" ref="${restExpress.executorThreadCount}" />
+	</bean>
+</beans>

@@ -1,0 +1,90 @@
+
+//--------- get parameter value from command line input 
+//--------- save a project level property for plug use
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    project.ext.set("environment", environment)
+    project.ext.set("distVersion", "4.1.0")//distribution version number
+}
+
+//----------------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin:'application'
+apply from: 'tasks.gradle'
+
+group = 'igeniestp'
+version = project.distVersion
+mainClassName = "com.oct.ga.stp.http.server.RestfulStpServer"
+
+processResources.dependsOn copyConfiguration
+installApp.dependsOn modscript
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'stp http server', 'Implementation-Version': version
+    }
+
+    exclude '**/config.properties'   
+    exclude '**/jdbc.properties'   
+}
+
+repositories {
+   mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+//        resources {
+//            srcDir 'conf'
+//        }
+    }
+     
+}
+
+
+dependencies {
+
+	compile project(':igenie-comm')
+	compile project(':igenie-stp-base')
+	compile project(':igenie-stp')
+	compile project(':igenie-gatekeeper')
+	
+	compile fileTree(dir: 'lib', include: '*.jar')
+    
+	compile 'junit:junit:4.11'
+	compile 'org.slf4j:slf4j-log4j12:1.6.6'
+    compile 'commons-beanutils:commons-beanutils:1.8.0'
+    compile 'commons-collections:commons-collections:3.2.1'
+    compile 'net.sf.ezmorph:ezmorph:1.0.6'
+    
+    //compile 'io.netty:netty-all:5.0.0.Alpha2'
+    //compile 'io.netty:netty-codec-http:5.0.0.Alpha2'
+    compile 'io.netty:netty-all:4.0.30.Final'
+    //compile 'io.netty:netty-codec-http:4.0.30.Final'
+
+    compile 'org.jboss.resteasy:resteasy-jaxrs:3.0.11.Final'
+    compile 'com.strategicgains:RestExpress:0.11.2'
+    
+    compile 'com.mchange:c3p0:0.9.5-pre8'    
+    compile 'mysql:mysql-connector-java:5.1.33'
+    
+    compile 'org.springframework:spring-context:4.2.1.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
+    
+    compile 'org.apache.mina:mina-core:2.0.7'
+    compile 'org.apache.mina:mina-example:2.0.7'
+    
+    compile 'org.apache.httpcomponents:httpclient:4.3.3'
+    
+    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
