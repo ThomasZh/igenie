@@ -1,0 +1,94 @@
+
+//--------- get parameter value from command line input 
+//--------- save a project level property for plug use
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    project.ext.set("environment", environment)
+    project.ext.set("distVersion", "4.3.0")//distribution version number
+}
+
+//----------------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin:'application'
+apply from: 'tasks.gradle'
+
+group = 'igeniestp'
+version = project.distVersion
+mainClassName = "com.oct.ga.stp.StpServer"
+
+
+processResources.dependsOn copyConfiguration
+installApp.dependsOn modscript
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'stp server', 'Implementation-Version': version
+    }
+
+    exclude '**/config.properties'   
+    exclude '**/jdbc.properties'   
+}
+
+repositories {
+   mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+//        resources {
+//            srcDir 'conf'
+//        }
+    }
+     
+}
+
+
+dependencies {
+
+	compile project(':igenie-comm')
+	compile project(':igenie-stp-base')
+	compile project(':igenie-gatekeeper')
+	
+	compile fileTree(dir: 'lib', include: '*.jar')
+    
+	compile 'junit:junit:4.11'
+
+    compile 'org.apache.commons:commons-email:1.3.2'
+    compile 'org.apache.mina:mina-core:2.0.7'
+    compile 'org.apache.mina:mina-example:2.0.7'
+    
+	compile 'org.slf4j:slf4j-log4j12:1.6.6'
+    compile 'org.springframework.data:spring-data-mongodb:1.4.1.RELEASE'
+    //compile 'c3p0:c3p0:0.9.1.2'
+    compile 'com.mchange:c3p0:0.9.5-pre8'
+    
+    //compile 'org.xerial:sqlite-jdbc:3.7.2'
+    compile 'mysql:mysql-connector-java:5.1.33'
+    //compile 'mysql:mysql-connector-mxj:5.0.12'
+    compile 'org.mongodb:mongo-java-driver:2.12.0'
+    
+    compile 'commons-beanutils:commons-beanutils:1.8.0'
+    compile 'commons-collections:commons-collections:3.2.1'
+    compile 'net.sf.ezmorph:ezmorph:1.0.6'
+    
+    compile 'org.apache.httpcomponents:httpclient:4.3.3'
+    //compile 'org.apache.ant:ant:1.9.4'
+    compile 'com.rabbitmq:amqp-client:3.3.3'
+    
+    compile 'com.notnoop.apns:apns:1.0.0.Beta6'
+	compile 'cn.jpush.api:jpush-client:3.2.3'
+    
+    //compile 'com.aliyun.openservices:aliyun-openservices:1.2.3'
+    
+    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

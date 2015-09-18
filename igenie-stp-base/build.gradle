@@ -1,0 +1,77 @@
+
+//--------- get parameter value from command line input 
+//--------- save a project level property for plug use
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    project.ext.set("environment", environment)
+    project.ext.set("distVersion", "2.6.0")//distribution version number
+}
+
+//----------------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin:'application'
+apply from: 'tasks.gradle'
+
+group = 'igenieserverbase'
+version = project.distVersion
+mainClassName = "com.oct.ga.stp.StpServer"
+
+
+processResources.dependsOn copyConfiguration
+installApp.dependsOn modscript
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'base service', 'Implementation-Version': version
+    }
+
+    exclude '**/config.properties'   
+    exclude '**/jdbc.properties'   
+}
+
+repositories {
+   mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+//        resources {
+//            srcDir 'conf'
+//        }
+    }
+     
+}
+
+
+dependencies {
+
+	compile project(':igenie-comm')
+	
+	compile fileTree(dir: 'lib', include: '*.jar')
+    
+	compile 'junit:junit:4.11'
+
+    compile 'org.apache.commons:commons-email:1.3.2'
+    compile 'org.apache.mina:mina-core:2.0.7'
+    compile 'org.apache.mina:mina-example:2.0.7'
+    
+	compile 'org.slf4j:slf4j-log4j12:1.6.6'
+    
+    compile 'commons-beanutils:commons-beanutils:1.8.0'
+    compile 'commons-collections:commons-collections:3.2.1'
+    compile 'net.sf.ezmorph:ezmorph:1.0.6'
+    
+    compile 'velocity:velocity:1.5'
+    
+    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

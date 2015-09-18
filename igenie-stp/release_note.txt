@@ -1,0 +1,336 @@
+======================================================================
+igenie-stp_v4.3.0											2015.8.27
+new feature:
+	1.multcast task log
+	
+======================================================================
+igenie-stp_v4.2.2											2015.8.26
+fix bug:
+	1.create default 3 projects, chinese word error.
+new feature:
+	1.add moment favorite/comment into task log
+	2.add query a moment info command
+
+======================================================================
+igenie-stp_v4.2.1											2015.8.24
+fix bug:
+	1.query moment pagination lost momentId.
+
+======================================================================
+igenie-stp_v4.2.0											2015.8.21
+new feature:
+	1.add moment comment command class.
+	2.add moment favorite command class.
+	3.query moment comment pagination command class.
+	4.query moment favorite pagination command class.
+	5.change query moment pagination command class.
+		add commentNum & favoriteNum in it;
+		add comments & favorites in it
+		
+======================================================================
+igenie-stp_v4.1.0											2015.7.14
+modify class struct:
+	1.move PropArgs from config.propeities file to gcv-context.xml
+	
+======================================================================
+igenie-stp_v4.0.2											2015.7.13
+new feature:
+	1.add device register & login command adapter
+
+======================================================================
+igenie-stp_v4.0.1											2015.7.11
+new feature:
+	1.GaInlinecastMessageServiceImpl
+
+======================================================================
+igenie-stp_v4.0.0											2015.7.10
+modify class struct:
+	1.merge club into this project
+	2.merge message into this project
+	3.merge group into this project
+	4.merge task into this project
+	
+======================================================================
+igeniestp_v3.4.6											2014.10.31
+new feature:
+	1.add FriendInviteApplyAdapter & FriendInviteAcceptAdapter
+	
+======================================================================
+igeniestp_v3.4.5											2014.10.28
+new feature:
+	1.QueryMessageBadgeNumberAdapter max lastTryTime=monthAgo
+	2.QueryActivityBadgeNumberAdapter max lastTryTime=monthAgo
+	
+======================================================================
+igeniestp_v3.4.4											2014.10.22
+new feature:
+	1.optimize select sql 
+
+======================================================================
+igeniestp_v3.4.3											2014.10.21
+new feature:
+	1.add sync task command
+	
+======================================================================
+igeniestp_v3.4.2											2014.10.18
+new feature:
+	1.add GaInviteService interface
+	2.add GaTmplateService interface
+
+======================================================================
+igeniestp_v3.4.1											2014.10.18
+modify class struct:
+	1.GaMessageService
+
+======================================================================
+igeniestp_v3.4.0											2014.10.17
+new feature:
+	1.query member_num,file_num from cscart_ga_group table
+	
+======================================================================
+igenieserver_v3.3.3											2014.10.16
+modify class struct:
+	1.redefine Ativity class extends TaskBaseInfo class
+	2.store activity info into task table
+	
+======================================================================
+igenieserver_v3.3.2											2014.10.15
+modify class struct:
+	1.remove club/account/contact command
+	
+======================================================================
+igenieserver_v3.3.1											2014.10.14	
+new feature:
+	1.add query file url command
+	2.add query register&login command
+	
+======================================================================
+igenieserver_v3.3.0											2014.10.12	
+new feature:
+	1.change person photo from db=>ali oss
+	
+======================================================================
+igenieserver_v3.2.0											2014.10.11	
+new feature:
+	1.define error code
+	
+======================================================================
+igenieserver_v3.1.1											2014.10.10	
+new feature::
+	1.add mail sender test
+	2.forgot password
+	
+======================================================================
+igenieserver_v3.1.0											2014.9.25	
+fix bug:
+	1.user/pwd has no salt in db, do not use md5 again
+
+new feature:
+	1.Use aliyun oss as ftp service, store files
+	
+======================================================================
+igenieserver_v3.0.1											2014.9.24	
+fix bug:
+	1.cancel heartbit
+	2.Modify all command exception print out function
+
+
+======================================================================
+igenieserver_v3.0.0											2014.9.16
+modify class struct:
+	1.create
+	
+new feature:
+fix bug:
+modify env:
+
+======================================================================
+igenieserver_v2.2.4											2014.9.16
+fix bug:
+	1.ActivityQueryHistoryPaginationReq add isMember
+	2.ActivityQuerySubscribeReq end_time>today
+
+======================================================================
+igenieserver_v2.2.3											2014.9.10
+new feature:
+	1.Query club activity history pagination
+	
+======================================================================
+igenieserver_v2.2.2											2014.9.3
+fix bug:
+	1.Club update,not add member info, don't update member
+	2.create club, add me as first member
+	3.query club subscribers
+	4.query activity: member_num
+	5.club add subscribers
+	6.club remove subscribers
+	7.batch update club subscribers
+	
+======================================================================
+igenieserver_v2.2.1											2014.8.29
+fix bug:
+	1.QueryMessageBadgeNumberReq杩����缁����(MessageInlinecast)涓�澧����currentTimestamp
+	
+======================================================================
+igenieserver_v2.2.0											2014.8.28
+new feature:
+	1.Recommend activity
+	2.Query club detail
+	
+======================================================================
+igenieserver_v2.1.1											2014.8.28
+fix bug:
+	1.���绂�subscriber���member
+	
+======================================================================
+igenieserver_v2.1.0											2014.8.26
+new feature:
+	1.Create club
+	2.Update club
+	3.Add club member
+	4.Update club member
+	5.Query my clubs
+	6.Query club members
+	7.Create activity
+	8.Update activity
+	9.Join activity
+	10.Query activity members
+	11.Query subscribe activity
+	
+======================================================================
+igenieserver_v2.0.4											2014.8.20
+new feature:
+	1.璋����log4j��ュ��杈���猴����逛究缁�璁�session��诲����堕��
+	2.��ㄦ�蜂俊���澧�������绛惧�����
+	
+fix bug:
+	1.瀹����InlinecastMessageService杈���虹����ュ��淇℃��
+	
+======================================================================
+igenieserver_v2.0.3											2014.8.19
+fix bug:
+	1.���澶╀��杈�琛ㄦ��绗���峰け璐�(��ュ��澶辫触)
+
+modify���澧�������锛�
+	1.MySQL table:cscart_ga_message_original(MessageTxt:vchar255=>MediumBlob) 
+	2.澧������跺�版�����纭�璁�Command,���娑����宸茶��Command define
+
+======================================================================
+tripstp_v1.8.3												2014.7.5
+fix bug:
+	1.���宸变骇������Activity缃�涓哄凡璇�
+	2.浼����GaMessageService:sendToAnotherStp浠ｇ��锛�涓�蹇�������ARQ
+	3.ActivityBadgeNumber涓����纭�
+
+modify���澧�������锛�
+	1.Log�����ユ�ュ�����浠�
+	2.memcached�����ㄥ�����
+
+======================================================================
+tripstp_v1.8.2												2014.7.4
+fix bug:
+	1.���浠朵��浼�淇���瑰��绉�
+	2.椤圭��������妯＄�����缂�杈����绉�
+	3.SyncTask��讹��TaskMember������������宸�
+	4.stp涔���村�����message锛�娌℃�����濮����message锛�瀵艰��null exception
+	5.TransmitActivityReq瑙ｆ����版�����涓���伴��璇�
+	6.query task activity涓����浼�杈�taskpid
+	7.BaseEventHandler��ゆ��session��������讹��������transmit锛�admin锛���戒护
+	8.queryTaskActivityPagination,�����ら��澶���版��
+
+======================================================================
+tripstp_v1.8.1												2014.7.4
+fix bug:
+	1.������缁����宸辩��message���宸茶��
+
+======================================================================
+tripstp_v1.8.0												2014.7.3
+new feature:
+	1.Message��ヨ��BadgeNumber�����惰�����MessageList json��版��
+	2.Activity��ヨ��BadgeNumber�����惰�����ActivityList json��版��
+	3.SyncTaskActivity绫讳腑close member/activity涓�������棣�
+	4.query message涓�澧����syncState
+	5.query activity涓�澧����syncState
+	6.Message SyncState:read
+	7.Activity SyncState:read
+	
+fix bug:
+	1.TaskActivityDaoImpl.queryPagination
+						.queryUnreadNumberByProject
+						.queryLastUnreadByProject
+		SQL: WHERE (TaskId=? OR TaskPid=?)
+
+modify���澧�������锛�
+	1.cscart_ga_task_activity_extend琛�
+		SyncState: defatul=51
+	2.cscart_ga_message_extens琛�
+		瀛�娈靛��淇����SyncState: defatul=51
+	
+======================================================================
+tripstp_v1.7.0												2014.7.2
+modify class struct:
+	1.GaSessionService绫诲��涓�4涓�map瀹����
+	2.娓����GaSessionServiceIf绫荤��
+
+new feature:
+	1.���浠ュ�哄�����涓�account浣跨�ㄥ��涓�device, 瀵瑰����ㄦ�枫��澶�璁惧�����浜������������虹��
+	2.client send disconnect failure, and login again.
+		BaseEventHandler.sessionClosed��ゆ�������������扮��ioSessionId浜х��
+		���锛�do nothing
+		���锛�inactive
+	3.cline涓�server(mina)寤虹��杩���ユ�讹��server��ゆ�������������х��ioSession�����抽��
+	4.���涔����Device���Account���Device瀵瑰����崇郴淇℃��
+	
+fix bug:
+	1.login涓����寰�ioSessionId绌烘�����寮�甯�
+	2.��ヨ��Message���TaskActivity Dao涓�SQL璇���ラ��璇�
+	
+modify���澧�������锛�
+	1.application-config.xml
+		<!-- session service bean -->
+		<bean id="gaSessionService" class="com.oct.session.SessionService3MapImpl">
+		</bean>
+	2.cscart_ga_device琛ㄤ腑ApnsToken can be null
+	
+======================================================================
+tripstp_v1.6.1												2014.7.1
+modify class struct:
+	1.寤虹��MessageOriginal��虹被锛���╁��绫�MessageExtend���浼�杈�绫�TransmitMessage
+	2.InviteMessage��╁��TransmitMessage绫�
+	3.ActivityMessage��╁��TransmitMessage绫�
+	4.task->template,template->task�����界Щ���GaTemplateService绫讳腑
+	5.缁�涓�浠�GaApplicationContextUtil绫讳腑���寰����绉�������
+	6.璋���村��绉����寰�service���缁�涓���规��
+	
+modify���澧�������锛�
+	1.cscart_ga_task_activity琛ㄤ腑澧����TaskPid瀛�娈�
+	
+======================================================================
+igeniecomm_v1.1.0											2014.6.30
+modify���澧�������锛�
+	1.Command澧����涓ょ����戒护锛�
+		QueryMessageBadgeNumberReq
+		QueryMessageBadgeNumberResp
+		QueryActivityBadgeNumberReq
+		QueryActivityBadgeNmuberResp
+
+======================================================================
+tripstp_v1.6.0												2014.6.30
+fix bug:
+	1.妯＄��涓�瀛�浠诲�★�������ф�堕�达����卞����板ぇ锛����搴�
+	2.��ヨ�㈡ā������琛ㄦ�讹��������澶х��������
+	3.��遍」���������妯＄����讹��璁板��椤圭����凤��渚夸�����缁���ヨ�㈤」������澶�������妯＄��
+	4.澧������ヨ�㈢�遍」������������妯＄��������澶х�������风����规��
+	5.��遍」���������妯＄����讹�������ョ�������凤��濡���������茶�板��锛���������封��1
+	6.��辨ā���������椤圭����讹��璁板��妯＄�����������
+	7.椤圭��锛�浠诲�℃��浣���讹��妫���ユā���锛����瑕�涓���������峰�瑰��
+
+new feature:
+	1.澧������ヨ��BadgeNumber(Message/Activity)�����规��
+
+modify���澧�������锛�
+	1.cscart_ga_template琛ㄤ腑澧����TaskId瀛�娈�, ���浠ヤ负null
+	2.cscart_ga_task琛ㄤ腑澧����TemplateVersion瀛�娈碉��涓����浠ヤ负绌猴��榛�璁わ��0
+	3.cscart_ga_template琛�:TemplateId���Version涓鸿�����涓婚��
+
+======================================================================

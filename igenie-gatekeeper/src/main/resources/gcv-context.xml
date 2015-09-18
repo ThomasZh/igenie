@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- gcv -->
+	<bean id="globalConfigurationVariables" class="com.oct.ga.gatekeeper.GlobalConfigurationVariables" >
+		<property name="gatekeeperVersion" value="igenie-gatekeeper_v2.2.0" />
+		<property name="gatekeeperId" value="b89e7d48-25e6-4ed7-9fff-1b000dbf6cdf" />
+		<property name="gatekeeperPort" value="13101" />
+		<property name="heartbitInterval" value="8000" />
+		<property name="checkInterval" value="15000" />
+		<!-- development,production -->
+		<property name="apnsCertificateDestination" value="production" />
+		<property name="apnsCertificatePath" value="/home/thomas/stp13107/conf/apns_certificate_production.p12" />
+		<property name="apnsCertificateCode" value="123456" />
+		<property name="stpServerListPath" value="/home/thomas/stp13107/conf/stpServer.list" />
+		<property name="supServerListPath" value="/home/thomas/stp13107/conf/supServer.list" />
+	</bean>
+
+</beans>

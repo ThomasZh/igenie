@@ -1,0 +1,235 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- datasource config -->
+	<import resource="jdbc-context.xml" />
+	<import resource="gcv-context.xml" />
+
+
+
+	<!-- start of Dao beans -->
+	<bean id="gaFollowingDao" class="com.oct.ga.following.dao.spring.FollowingDaoImpl">
+		<property name="jdbcTemplate" ref="cscartJdbcTemplate" />
+	</bean>
+
+	<bean id="gaContactDao" class="com.oct.ga.addrbook.dao.spring.ContactDaoImpl">
+		<property name="jdbcTemplate" ref="cscartJdbcTemplate" />
+	</bean>
+
+	<bean id="gaGroupDao" class="com.oct.ga.group.dao.spring.GroupDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaSyncVerDao" class="com.oct.ga.syncVer.dao.spring.SyncVerDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaGroupMemberDao" class="com.oct.ga.group.dao.spring.GroupMemberDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<bean id="gaMomentDao" class="com.oct.ga.moment.dao.spring.MomentDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<bean id="gaMessageDao" class="com.oct.ga.message.dao.spring.MessageDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaMessageCacheDao" class="com.oct.ga.message.dao.spring.MessageCacheDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTaskInfoDao" class="com.oct.ga.task.dao.spring.TaskInfoDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTaskActivityDao" class="com.oct.ga.task.dao.spring.TaskActivityDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTaskNoteDao" class="com.oct.ga.task.dao.spring.TaskNoteDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTaskLogDao" class="com.oct.ga.task.dao.spring.TaskLogDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTemplateDao" class="com.oct.ga.template.dao.spring.TemplateDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaPublishLocDao" class="com.oct.ga.publish.dao.spring.PublishLocDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaDescDao" class="com.oct.ga.desc.dao.spring.DescDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<bean id="clubClubDao" class="com.oct.ga.club.dao.spring.ClubDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="clubActivityDao" class="com.oct.ga.club.dao.spring.ActivityDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<!-- invite dao bean -->
+	<bean id="gaInviteDao" class="com.oct.ga.invite.dao.spring.InviteDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaInviteFeedbackDao" class="com.oct.ga.invite.dao.spring.InviteFeedbackDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaBadgeNumDao" class="com.oct.ga.badgenum.dao.spring.BadgeNumDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaAppVersionDao" class="com.oct.ga.appver.dao.spring.AppVersionDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<bean id="gaApplyDao" class="com.oct.ga.apply.dao.spring.ApplyDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaApplicantTemplateDao" class="com.oct.ga.apply.dao.spring.ApplicantTemplateDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaApplicantDao" class="com.oct.ga.apply.dao.spring.ApplicantDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<bean id="gaTalentVoteDao" class="com.oct.ga.talent.dao.spring.TalentVoteDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTalentInfoDao" class="com.oct.ga.talent.dao.spring.TalentInfoDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+	<bean id="gaTalentScoreDao" class="com.oct.ga.talent.dao.spring.TalentScoreDaoImpl">
+		<property name="jdbcTemplate" ref="gaJdbcTemplate" />
+	</bean>
+
+	<!-- sup socket client -->
+	<!-- 
+	<bean id="supSocketClient" class="com.redoct.ga.sup.client.socket.SupSocketClientImpl">
+	</bean>
+	-->
+	<bean id="supSocketConnectPool" class="com.redoct.ga.sup.client.socket.pool.SupSocketConnectionPool">
+	</bean>
+	<bean id="supSocketClient" class="com.redoct.ga.sup.client.socket.pool.SupSocketPoolClientImpl">
+		<property name="pool" ref="supSocketConnectPool" />
+	</bean>
+
+	
+	<!-- sup service -->
+	<bean id="supAccountService" class="com.redoct.ga.sup.account.client.socket.AccountServiceSocketImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+	<bean id="supSessionService" class="com.redoct.ga.sup.session.client.socket.SessionServiceSocketImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+	<bean id="supDeviceService" class="com.redoct.ga.sup.device.client.socket.DeviceServiceSocketImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+	<bean id="supMailroom" class="com.redoct.ga.sup.mail.client.socket.MailServiceSocketImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+	<bean id="supSmsbox" class="com.redoct.ga.sup.sms.client.socket.SmsServiceSocketImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+	<bean id="supMessageService" class="com.redoct.ga.sup.message.client.socket.MessageServiceSocketImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+	
+	<!-- invite service bean -->
+	<bean id="gaInviteService" class="com.oct.ga.invite.InviteServiceImpl">
+		<property name="inviteDao" ref="gaInviteDao" />
+		<property name="feedbackDao" ref="gaInviteFeedbackDao" />
+	</bean>
+	<bean id="gaApplyService" class="com.oct.ga.apply.ApplyServiceImpl">
+		<property name="applyDao" ref="gaApplyDao" />
+		<property name="applicantTemplateDao" ref="gaApplicantTemplateDao" />
+		<property name="applicantDao" ref="gaApplicantDao" />
+	</bean>
+	
+
+	<!-- message service bean -->
+	<bean id="jpushMessageQueue" class="com.oct.ga.jpush.JPushMessageQueue">
+	</bean>
+	<bean id="gaMessageService" class="com.oct.ga.message.MessageServiceImpl">
+		<property name="messageDao" ref="gaMessageDao" />
+		<property name="messageCacheDao" ref="gaMessageCacheDao" />
+	</bean>
+
+	<bean id="gaApnsService" class="com.oct.ga.apns.ApnsServiceImpl">
+	</bean>
+	<bean id="gaJPushService" class="com.oct.ga.jpush.JPushServiceImpl">
+		<property name="jpushMq" ref="jpushMessageQueue" />
+	</bean>
+
+	<bean id="inlinecastMessageService" class="com.redoct.ga.sup.message.service.SupInlinecastMessageServiceImpl">
+		<property name="socketClient" ref="supSocketClient" />
+	</bean>
+
+	<!-- moment picture service bean -->
+	<bean id="gaMomentService" class="com.oct.ga.moment.MomentServiceImpl">
+		<property name="momentDao" ref="gaMomentDao" />
+	</bean>
+
+	<!-- sync version service bean -->
+	<bean id="gaSyncVerService" class="com.oct.ga.syncVer.SyncVerServiceImpl">
+		<property name="syncVerDao" ref="gaSyncVerDao" />
+	</bean>
+
+	<!-- contact service -->
+	<bean id="gaContactService" class="com.oct.ga.addrbook.ContactServiceImpl">
+		<property name="contactDao" ref="gaContactDao" />
+	</bean>
+
+	<!-- group service bean -->
+	<bean id="gaGroupService" class="com.oct.ga.group.GroupServiceImpl">
+		<property name="groupDao" ref="gaGroupDao" />
+		<property name="groupMemberDao" ref="gaGroupMemberDao" />
+		<property name="accountService" ref="supAccountService" />
+	</bean>
+
+	<!-- task activity service -->
+	<bean id="gaTaskService" class="com.oct.ga.task.TaskServiceImpl">
+		<property name="taskInfoDao" ref="gaTaskInfoDao" />
+		<property name="taskActivityDao" ref="gaTaskActivityDao" />
+		<property name="taskNoteDao" ref="gaTaskNoteDao" />
+		<property name="taskLogDao" ref="gaTaskLogDao" />
+	</bean>
+	<!-- template service -->
+	<bean id="gaTemplateService" class="com.oct.ga.template.TemplateServiceImpl">
+		<property name="templateDao" ref="gaTemplateDao" />
+	</bean>
+
+	<!-- club service -->
+	<bean id="clubClubService" class="com.oct.ga.club.service.ClubServiceImpl">
+		<property name="clubDao" ref="clubClubDao" />
+		<property name="activityDao" ref="clubActivityDao" />
+		<property name="accountService" ref="supAccountService" />
+	</bean>
+	<bean id="clubActivityService" class="com.oct.ga.club.service.ActivityServiceImpl">
+		<property name="activityDao" ref="clubActivityDao" />
+		<property name="clubService" ref="clubClubService" />
+		<property name="groupService" ref="gaGroupService" />
+	</bean>
+	<bean id="gaPublishService" class="com.oct.ga.publish.PublishServiceImpl">
+		<property name="publishLocDao" ref="gaPublishLocDao" />
+	</bean>
+	<bean id="gaDescService" class="com.oct.ga.desc.DescServiceImpl">
+		<property name="descDao" ref="gaDescDao" />
+	</bean>
+	<bean id="gaFollowingService" class="com.oct.ga.following.FollowingServiceImpl">
+		<property name="followingDao" ref="gaFollowingDao" />
+	</bean>
+
+	<bean id="gaBadgeNumService" class="com.oct.ga.badgenum.BadgeNumServiceImpl">
+		<property name="badgeNumDao" ref="gaBadgeNumDao" />
+	</bean>
+	<bean id="gaAppVersionService" class="com.oct.ga.appver.AppVersionServiceImpl">
+		<property name="appVersionDao" ref="gaAppVersionDao" />
+	</bean>
+	
+	<bean id="gaTalentService" class="com.oct.ga.talent.TalentServiceImpl">
+		<property name="talentVoteDao" ref="gaTalentVoteDao" />
+		<property name="talentInfoDao" ref="gaTalentInfoDao" />
+		<property name="talentScoreDao" ref="gaTalentScoreDao" />
+	</bean>
+
+
+</beans>	

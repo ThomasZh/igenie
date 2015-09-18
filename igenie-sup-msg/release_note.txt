@@ -1,0 +1,15 @@
+======================================================================
+igenie-sup-msg_v1.0.1										2015.8.22
+fix bug:
+	1.MultcastInviteAdapter first response, then send multcast
+	2.MultcastInviteFeedbackAdapter first response, then send multcast
+	3.MultcastMessageAdapter first response, then send multcast
+
+======================================================================
+igenie-sup-msg_v1.0.0										2015.7.26
+modify class struct:
+	1.create
+	
+new feature:
+fix bug:
+modify env args:

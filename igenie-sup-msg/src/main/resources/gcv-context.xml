@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 这个bean主要是为了得到ApplicationContext 所以它不需要其它属性 -->
+    <bean id="applicationContextUtil" class="com.oct.ga.stp.ApplicationContextUtil" />
+    
+	<!-- gcv -->
+	<bean id="globalConfigurationVariables" class="com.oct.ga.stp.GlobalConfigurationVariables" scope="prototype">
+		<property name="stpVersion" value="igenie-sup-message_v1.0.0" />
+		<property name="stpId" value="68df84ba-9ec0-4df5-b62d-dc57d997529f" />
+		<property name="stpPort" value="15106" />
+		<!-- development,production -->
+		<property name="apnsCertificateDestination" value="production" />
+		<property name="apnsCertificatePath" value="/Users/thomas/git/igenie-stp/conf/apns_certificate_production.p12" />
+		<property name="apnsCertificateCode" value="123456" />
+		<property name="stpServerListPath" value="/Users/thomas/git/igenie-stp/conf/stpServer.list" />
+		<property name="supServerListPath" value="/Users/thomas/git/igenie-stp/conf/supServer.list" />
+	</bean>
+
+</beans>

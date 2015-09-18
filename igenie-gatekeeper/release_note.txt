@@ -1,0 +1,35 @@
+======================================================================
+igenie-gatekeeper_v2.2.0										2015.7.14
+modify class struct:
+	1.move PropArgs from config.propeities file to gcv-context.xml
+	
+======================================================================
+igenie-gatekeeper_v2.1.0									2014.9.25
+new feature:
+	1.判断stp是否active，由monitor提供信息
+
+fix bug:
+	1.Modify all command exception print out function
+	
+======================================================================
+igenie-gatekeeper_v2.0.1									2014.9.24
+fix bug:
+	1.经常无法获取active的stpserver(ip:port)
+		停止轮询loadFromFile(stpServer.list)
+	2.恢复持久化Device信息到数据库功能
+
+new feature:
+	1.判断stp是否active，由monitor提供信息
+	
+modify环境变量：
+	1.application-config.xml中增加gaDeviceDao
+	2.stpServer.list中增加active
+
+======================================================================
+igenie-gatekeeper_v2.0.0									2014.9.16
+modify class struct:
+	1.create
+	
+new feature:
+fix bug:
+modify环境变量：

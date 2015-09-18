@@ -1,0 +1,36 @@
+======================================================================
+igenie-sup-base_v1.3.0										2015.7.27
+modify class struct:
+	1.create SupSocketClient interface
+	2.implement SupSocketClientImpl
+	
+======================================================================
+igenie-sup-base_v1.2.1										2015.7.11
+new feature:
+	1.add QueryGateSession Command
+	2.add QueryLoginName(email,phone) Command
+
+======================================================================
+igenie-sup-base_v1.2.0										2015.7.9
+new feature:
+	1.add change login's accountId, change login to another account
+	
+======================================================================
+igenie-sup-base_v1.1.1										2015.6.28
+new feature:
+	1.add send verificationCode command
+	2.add phone register command
+	
+======================================================================
+igenie-sup-base_v1.1.0										2015.6.22
+new feature:
+	1.add sup-mailroom service 
+
+======================================================================
+igenie-sup-base_v1.0.0										2015.6.15
+modify class struct:
+	1.create
+	
+new feature:
+fix bug:
+modify env args:
