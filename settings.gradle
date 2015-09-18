@@ -1,0 +1,25 @@
+include 'igenie-comm',
+
+        'igenie-stp-base', 
+
+        'igenie-sup-base',
+
+        'igenie-sup-account',
+
+        'igenie-sup-session',
+
+        'igenie-sup-device',
+
+        'igenie-sup-mailroom',
+
+        'igenie-sup-smsbox',
+
+        'igenie-sup-msg',
+
+        'igenie-stp', 
+
+        'igenie-gatekeeper',
+
+        'igenie-monitor',
+		
+		'ga-stp-http'
