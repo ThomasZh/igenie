@@ -1,0 +1,349 @@
+======================================================================
+igenie-comm_v3.13.2											2015.8.27
+new feature:
+	1.add inlinecast task log command class.
+	
+======================================================================
+igenie-comm_v3.13.1											2015.8.26
+new feature:
+	1.add query moment command class.
+
+======================================================================
+igenie-comm_v3.13.0											2015.8.21
+new feature:
+	1.add moment comment command class.
+	2.add moment favorite command class.
+	3.query moment comment pagination command class.
+	4.query moment favorite pagination command class.
+	5.change query moment pagination command class.
+		add commentNum & favoriteNum in it;
+		add comments & favorites in it
+	
+======================================================================
+igenie-comm_v3.12.9											2015.8.10
+new feature:
+	1.add today2Str util
+	2.add upyun default url define
+	
+======================================================================
+igenie-comm_v3.12.8											2015.8.6
+new feature:
+	1.add TASK_ACTION_APPLY in GlobalArgs
+	1.add TASK_ACTION_ACCEPT in GlobalArgs
+	1.add TASK_ACTION_REJECT in GlobalArgs
+	1.add TASK_ACTION_REFILL in GlobalArgs
+
+======================================================================
+igenie-comm_v3.12.7											2015.8.4
+new feature:
+	1.add attribute memberRank in GaMomentObject
+	2.add CLUB_ACTIVITY_PUBLISH_TYPE_EXERCISE_1 in GlobalArgs, demo for input profile 
+	3.add CLUB_ACTIVITY_PUBLISH_TYPE_EXERCISE_2 in GlobalArgs, demo for invite friend
+	4.add CLUB_ACTIVITY_PUBLISH_TYPE_EXERCISE_3 in GlobalArgs, demo for create a project
+	5.add TASK_ACTION_RECOMMEND in GlobalArgs
+	
+======================================================================
+igenie-comm_v3.12.6											2015.8.2
+new feature:
+	1.add QueryMsgFlowPaginationReq command
+	2.add QueryMsgFlowPaginationResp command
+	
+======================================================================
+igenie-comm_v3.12.5											2015.8.1
+new feature:
+	1.add QueryAllMomentsPaginationReq command
+	2.add QueryAllMomentsPaginationResp command
+	
+======================================================================
+igenie-comm_v3.12.3											2015.7.16
+new feature:
+	1.add attribute required into GaApplicantTemplateCell
+	
+======================================================================
+igenie-comm_v3.12.2											2015.7.13
+new feature:
+	1.add device register & login command
+	2.add attribute lang into SsoRegisterLogin command
+	3.add attribute lang into RegisterLogin command
+
+======================================================================
+igenie-comm_v3.12.0											2015.7.9
+new feature:
+	1.add bind phone commands
+	
+======================================================================
+igenie-comm_v3.11.0											2015.6.28
+new feature:
+	1.add send verificationCode command
+	2.add phone register command
+	
+======================================================================
+igenie-comm_v3.10.1											2015.5.28
+new feature:
+	1.add attribute(descChapters) into ActivityCreateReq class
+
+======================================================================
+igenie-comm_v3.10.0											2015.5.27
+new feature:
+	1.add activity desc package
+	
+======================================================================
+igenie-comm_v3.9.12											2015.5.26
+new feature:
+	1.add attribute(createTime) into ActivityQueryFutureFilterByLocPaginationResp class
+	
+======================================================================
+igenie-comm_v3.9.11											2015.5.26
+new feature:
+	1.add attribute(publish location) into ActivityCreateReq class
+	
+======================================================================
+igenie-comm_v3.9.10											2015.5.20
+new feature:
+	1.add apply_num into AccountBadgeNumJsonBean class
+	2.add attribute(sequence,state) into SyncTaskDetailResp class
+
+======================================================================
+igenie-comm_v3.9.9											2015.5.19
+new feature:
+	1.add INVITE_STATE_JOIN into GlobalArgs class
+
+======================================================================
+igenie-comm_v3.9.8											2015.5.18
+new feature:
+	1.add attribute(memberState) into ApplicantInfosQueryResp class
+
+======================================================================
+igenie-comm_v3.9.6											2015.5.11
+new feature:
+	1.add attribute(applyFormType,approveType) into ActivityQueryDetailResp class
+	2.add attribute(contactCells,participationCells) into ActivityCreateInfo class
+	
+======================================================================
+igenie-comm_v3.9.5											2015.5.11
+new feature:
+	1.add attribute(memberRank,memberState) into QueryMemberListResp class
+	
+======================================================================
+igenie-comm_v3.9.4											2015.5.11
+new feature:
+	1.add attribute(chatId,msgId) into GaApplyStateNotify class
+	
+======================================================================
+igenie-comm_v3.9.3											2015.5.11
+new feature:
+	1.ApplicantTemplateUpload
+	2.ApplicantTemplateQuery
+	3.ApplicantInfoUpload
+	4.ApplicantInfoQuery
+	5.SyncApplyState
+	
+======================================================================
+igenie-comm_v3.9.2											2015.5.5
+fix bug:
+	1.parser encode in QueryMomentPaginationResp command
+
+======================================================================
+igenie-comm_v3.9.1											2015.5.4
+fix bug:
+	1.parser encode in DeleteTaskNoteReq command
+
+======================================================================
+igenie-comm_v3.9.0											2015.4.29
+new feature:
+	1.add apply info commands
+
+======================================================================
+igenie-comm_v3.8.16											2015.4.23
+fix bug:
+	1.add parser STP_ACF
+	
+======================================================================
+igenie-comm_v3.8.15											2015.4.23
+fix bug:
+	1.task command json parser change to gson
+
+======================================================================
+igenie-comm_v3.8.14											2015.4.16
+new feature:
+	1.add publishType attribute into ActivityCreatReq command
+
+======================================================================
+igenie-comm_v3.8.13											2015.4.15
+new feature:
+	1.add SsoLoginReq command
+
+======================================================================
+igenie-comm_v3.8.12											2015.4.6
+fix bug:
+	1.add InlinecastInviteReq command
+	2.add InlinecastInviteFeedbackReq command
+
+======================================================================
+igenie-comm_v3.8.11											2015.4.2
+fix bug:
+	1.add ConfirmReadMessageReq command
+
+======================================================================
+igenie-comm_v3.8.10											2015.3.25
+fix bug:
+	1.add ConfirmReceivedInviteResp command for android
+	2.modify JPushMessage class attribute for android
+	
+======================================================================
+igenie-comm_v3.8.9											2015.3.22
+fix bug:
+	1.modify message logic(upload & queryPagination)
+	
+======================================================================
+igenie-comm_v3.8.8											2015.3.16
+new feature:
+	1.add command(moveTaskTo, copyTaskTo)
+	2.add command(checkVersionUpgrade)
+fix bug:
+	1.club command(QueryMessagePaginationResp) json parser change to gson
+	2.club command(UploadMessageResp) json parser change to gson
+	3.club command(QueryMessageBadgeNumberResp) json parser change to gson
+
+======================================================================
+igenie-comm_v3.8.7											2015.3.12
+fix bug:
+	1.club command(QueryMomentPhotoFlowPaginationResp) json parser change to gson
+	
+======================================================================
+igenie-comm_v3.8.6											2015.3.6
+new feature:
+	1.add query my activity(history & future) pagination command
+	2.modify activity(create & update) command
+
+======================================================================
+igenie-comm_v3.8.5											2015.3.3
+new feature:
+	1.add query budge num command
+
+======================================================================
+igenie-comm_v3.8.4											2015.2.27
+fix bug:
+	1.club command json parser change to gson
+	
+======================================================================
+igenie-comm_v3.8.3											2015.2.17
+fix bug:
+	1.command encode => tlv object error
+
+======================================================================
+igenie-comm_v3.8.2											2015.2.10
+fix bug:
+	1.merge invteResp(json) & feedbackResp(json) into syncInviteResp
+	
+======================================================================
+igenie-comm_v3.8.1											2015.2.9
+fix bug:
+	1.add encode json by gson in invite package
+	
+======================================================================
+igenie-comm_v3.8.0											2015.2.5
+modify env:
+	1.change parser json jar to gson
+
+======================================================================
+igenie-comm_v3.7.1											2015.2.4
+fix bug:
+	1.SyncMyAccountReq command only 1 pkg(lastTryTime)
+	
+======================================================================
+igenie-comm_v3.7.0											2015.1.31
+fix bug:
+	1.account command add decode
+	2.auth command add decode
+	
+======================================================================
+igenie-comm_v3.6.5											2014.10.31
+new feature:
+	1.add FriendInviteApplyReq & FriendInviteAcceptReq
+	
+======================================================================
+igenie-comm_v3.6.4											2014.10.28
+new feature:
+	1.query club list, add title_background_image info
+	
+======================================================================
+igenie-comm_v3.6.3											2014.10.19
+new feature:
+	1.add sync task command
+
+======================================================================
+igenie-comm_v3.6.2											2014.10.18
+new feature:
+	1.add version define
+
+======================================================================
+igenie-comm_v3.6.1											2014.10.17
+fix bug:
+	1.limit tlv package tag(1000,5100), length(0,65535)
+
+======================================================================
+igenie-comm_v3.6.0											2014.10.17
+new feature:
+	1.query member_num,file_num from cscart_ga_group table
+	
+======================================================================
+igenie-comm_v3.5.0											2014.10.16
+modify class struct:
+	1.redefine Ativity class extends TaskBaseInfo class
+	2.store activity info into task table
+	
+======================================================================
+igenie-comm_v3.4.0											2014.10.15
+modify class struct:
+	1.define club service interface
+	2.only contact,no addrbook
+
+new feature:
+	1.add query member list command
+	
+======================================================================
+igenie-comm_v3.3.1											2014.10.14
+new feature:
+	1.add query file url command
+	2.add query register&login command
+	
+======================================================================
+igenie-comm_v3.3.0											2014.10.12
+new feature:
+	1.change person photo from db=>ali oss
+	
+======================================================================
+igenie-comm_v3.2.0											2014.10.11
+new feature:
+	1.define error code
+	
+======================================================================
+igenie-comm_v3.1.3											2014.10.10
+new feature:
+	1.forgot password
+	
+======================================================================
+igenie-comm_v3.1.2											2014.9.28
+fix bug:
+	1.shortcut all response master info 
+	
+======================================================================
+igenie-comm_v3.1.1											2014.9.27
+new feature:
+	1.add title_background_image into club info
+	2.add query fileinfo
+	
+======================================================================
+igenie-comm_v3.1.0											2014.9.25
+new feature:
+	1.Use aliyun oss as ftp service, store files
+
+======================================================================
+igenie-comm_v3.0.0											2014.9.16
+modify class struct:
+	1.create
+	
+new feature:
+fix bug:
+modify env

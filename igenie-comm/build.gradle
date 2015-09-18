@@ -1,0 +1,73 @@
+
+//--------- get parameter value from command line input 
+//--------- save a project level property for plug use
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    project.ext.set("environment", environment)
+    project.ext.set("distVersion", "3.13.2")//distribution version number
+}
+
+//----------------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin:'application'
+apply from: 'tasks.gradle'
+
+group = 'igenie-stp'
+version = project.distVersion
+mainClassName = "com.oct.ga.stp.StpServer"
+
+
+processResources.dependsOn copyConfiguration
+installApp.dependsOn modscript
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'stp server', 'Implementation-Version': version
+    }
+
+    exclude '**/config.properties'   
+    exclude '**/jdbc.properties'   
+}
+
+repositories {
+   mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+//        resources {
+//            srcDir 'conf'
+//        }
+    }
+     
+}
+
+
+dependencies {
+
+	//testCompile 'junit:junit:4.11'
+
+	compile fileTree(dir: 'lib', include: '*.jar')
+
+	compile 'org.apache.mina:mina-core:2.0.7'
+    //for server
+	compile 'org.slf4j:slf4j-log4j12:1.6.6'
+
+    //for android
+    //compile 'org.slf4j:slf4j-android:1.7.7'
+
+    compile 'commons-codec:commons-codec:1.9'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'net.sf.json-lib:json-lib:2.4:jdk15'
+    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
