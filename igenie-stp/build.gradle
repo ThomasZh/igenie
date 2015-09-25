@@ -28,8 +28,10 @@ jar {
         attributes 'Implementation-Title': 'stp server', 'Implementation-Version': version
     }
 
-    exclude '**/config.properties'   
-    exclude '**/jdbc.properties'   
+    exclude '*.properties'   
+    exclude '*.xml'
+    exclude '*.p12'
+    exclude '*.list'   
 }
 
 repositories {
@@ -85,7 +87,8 @@ dependencies {
 	compile 'cn.jpush.api:jpush-client:3.2.3'
     
     //compile 'com.aliyun.openservices:aliyun-openservices:1.2.3'
-    
+    compile 'io.netty:netty-all:4.0.30.Final'
+    compile 'com.strategicgains:RestExpress:0.11.2'
     
 }
 
