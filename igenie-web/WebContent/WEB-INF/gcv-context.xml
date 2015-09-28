@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 这个bean主要是为了得到ApplicationContext 所以它不需要其它属性 -->
+    <bean id="applicationContextUtil" class="com.oct.ga.stp.ApplicationContextUtil" />
+    
+	<!-- gcv -->
+	<bean id="globalConfigurationVariables" class="com.oct.ga.stp.GlobalConfigurationVariables" scope="prototype">
+		<property name="stpVersion" value="igenie-stp_v4.1.0" />
+		<property name="stpId" value="b89e7d48-25e6-4ed7-9fff-1b000dbf6cdf" />
+		<property name="stpPort" value="13107" />
+		<!-- development,production -->
+		<property name="apnsCertificateDestination" value="production" />
+		<property name="apnsCertificatePath" value="/Users/thomas/git/igenie-stp/conf/apns_certificate_production.p12" />
+		<property name="apnsCertificateCode" value="123456" />
+		<property name="stpServerListPath" value="/Users/thomas/git/igenie-stp/conf/stpServer.list" />
+		<property name="supServerListPath" value="/Users/thomas/git/igenie-stp/conf/supServer.list" />
+		<property name="defaultProjectName1st" value="第一个任务：修改头像和昵称" />
+		<property name="defaultProjectName2nd" value="第二个任务：邀请一位朋友加入A计划" />
+		<property name="defaultProjectName3rd" value="第三个任务：创建一个活动" />
+	</bean>
+
+</beans>
