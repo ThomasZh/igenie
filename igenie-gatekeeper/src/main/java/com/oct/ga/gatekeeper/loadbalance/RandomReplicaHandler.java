@@ -14,7 +14,7 @@ public class RandomReplicaHandler implements ReplicaHandler
 //	        if(i == 0)
 //	            return remotereference;
 //	        int j;
-//	        double d = Math.random() * (double)i + 0.5D;  // Ëæ»úÊı
+//	        double d = Math.random() * (double)i + 0.5D; 
 //	        j = (int)Math.round(d) - 1;
 //	        replicalist.get(j);
 //	        randomreplicahandler;

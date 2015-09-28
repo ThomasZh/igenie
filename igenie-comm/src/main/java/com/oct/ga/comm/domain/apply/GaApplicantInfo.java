@@ -5,9 +5,7 @@ import java.util.List;
 import com.oct.ga.comm.domain.JsonBeanAdapter;
 
 /**
- * 单个申请人信息集合
  * @author thomas
- *
  */
 public class GaApplicantInfo
 		extends JsonBeanAdapter

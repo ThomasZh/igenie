@@ -15,7 +15,6 @@ import com.rabbitmq.client.ShutdownSignalException;
 
 
 /**
- * 读取队列的程序端，实现了Runnable接口。
  * @author syntx
  *
  */

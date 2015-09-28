@@ -12,7 +12,7 @@ public interface GaSessionService
 	// //////////////////////////////////////////////////////////////
 
 	/**
-	 * 激活: client调用login或STP_ARQ时，server将此account+device置为在线(online)状态
+	 * online: client璋冪敤login鎴朣TP_ARQ缁檚erver(account+device)
 	 * 
 	 * @param accountId
 	 * @param deivceId
@@ -20,7 +20,7 @@ public interface GaSessionService
 	public void active(String accountId, String deviceId);
 
 	/**
-	 * 休眠: client调用disconnect时，server将此account+device置为离线(offline)状态
+	 * offline: client璋冪敤disconnect缁檚erver(account+device)
 	 * 
 	 * @param accountId
 	 * @param deivceId
@@ -28,7 +28,7 @@ public interface GaSessionService
 	public void inactive(String accountId, String deviceId);
 
 	/**
-	 * 此account使用此device是否在线？
+	 * account+device
 	 * 
 	 * @param accountId
 	 * @param deivceId
@@ -37,7 +37,7 @@ public interface GaSessionService
 	public boolean isOnline(String accountId, String deviceId);
 
 	/**
-	 * 此account使用此device最后一次操作日期时间
+	 * account+device
 	 * 
 	 * @param accountId
 	 * @param deivceId
@@ -67,7 +67,6 @@ public interface GaSessionService
 	public void putSession(String deviceId, GaSessionInfo session);
 
 	/**
-	 * 取得此device最后一次操作日期时间
 	 * 
 	 * @param deivceId
 	 * @return
@@ -90,7 +89,7 @@ public interface GaSessionService
 	public void putSession(String accountId, String deviceId, GaSessionInfo session);
 
 	/**
-	 * client调用logout时，server将account与device的关系断开
+	 * client璋冪敤logout缁檚erver(account+device)
 	 * 
 	 * @param accountId
 	 * @param deviceId
@@ -98,7 +97,7 @@ public interface GaSessionService
 	public void removeDevice(String accountId, String deviceId);
 
 	/**
-	 * 取得account拥有的device列表
+	 * 鍙栧緱璁惧鍒楄〃
 	 * 
 	 * @param accountId
 	 * @return
