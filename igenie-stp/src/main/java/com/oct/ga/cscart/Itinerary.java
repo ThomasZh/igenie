@@ -3,7 +3,6 @@ package com.oct.ga.cscart;
 import java.io.Serializable;
 import java.util.List;
 
-// ÂÃ³Ìµ¥
 public class Itinerary implements Serializable {
 	/**
 	 * 
