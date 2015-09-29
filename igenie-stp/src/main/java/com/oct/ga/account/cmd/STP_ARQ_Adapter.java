@@ -19,20 +19,15 @@ import com.redoct.ga.sup.account.SupAccountService;
 import com.redoct.ga.sup.session.SupSessionService;
 import com.redoct.ga.sup.session.domain.StpSession;
 
-public class STP_ARQ_Adapter
-		extends StpReqCommand
-{
-	public STP_ARQ_Adapter()
-	{
+public class STP_ARQ_Adapter extends StpReqCommand {
+	public STP_ARQ_Adapter() {
 		super();
 
 		this.setTag(Command.STP_ARQ);
 	}
 
 	@Override
-	public StpReqCommand decode(TlvObject tlv)
-			throws UnsupportedEncodingException
-	{
+	public StpReqCommand decode(TlvObject tlv) throws UnsupportedEncodingException {
 		reqCmd = new STP_ARQ().decode(tlv);
 		this.sequence = reqCmd.getSequence();
 
@@ -40,9 +35,7 @@ public class STP_ARQ_Adapter
 	}
 
 	@Override
-	public RespCommand execute(ApplicationContext context)
-			throws Exception
-	{
+	public RespCommand execute(ApplicationContext context) throws Exception {
 		String deviceId = reqCmd.getDeviceId();
 		String sessionTicket = reqCmd.getSessionToken();
 		STP_ACF respCmd = null;
@@ -82,6 +75,7 @@ public class STP_ARQ_Adapter
 							+ "]| session time out, expiryTime=[" + stpSession.getExpiryTime() + "]");
 
 					respCmd = new STP_ACF(ErrorCode.STP_ARQ_SESSION_TIMEOUT);
+					respCmd.setSequence(sequence);
 					return respCmd;
 				}
 			} else {
@@ -98,7 +92,7 @@ public class STP_ARQ_Adapter
 
 			respCmd = new STP_ACF(ErrorCode.UNKNOWN_FAILURE);
 		}
-
+		respCmd.setSequence(sequence);
 		return respCmd;
 	}
 

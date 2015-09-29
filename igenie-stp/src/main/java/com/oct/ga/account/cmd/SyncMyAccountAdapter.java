@@ -17,20 +17,15 @@ import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.stp.cmd.StpReqCommand;
 import com.redoct.ga.sup.account.SupAccountService;
 
-public class SyncMyAccountAdapter
-		extends StpReqCommand
-{
-	public SyncMyAccountAdapter()
-	{
+public class SyncMyAccountAdapter extends StpReqCommand {
+	public SyncMyAccountAdapter() {
 		super();
 
 		this.setTag(Command.SYNC_MY_ACCOUNT_REQ);
 	}
 
 	@Override
-	public StpReqCommand decode(TlvObject tlv)
-			throws UnsupportedEncodingException
-	{
+	public StpReqCommand decode(TlvObject tlv) throws UnsupportedEncodingException {
 		reqCmd = new SyncMyAccountReq().decode(tlv);
 		this.sequence = reqCmd.getSequence();
 
@@ -38,9 +33,7 @@ public class SyncMyAccountAdapter
 	}
 
 	@Override
-	public RespCommand execute(ApplicationContext context)
-			throws Exception
-	{
+	public RespCommand execute(ApplicationContext context) throws Exception {
 		String accountId = this.getMyAccountId();
 
 		try {
@@ -50,7 +43,7 @@ public class SyncMyAccountAdapter
 			AccountMaster account = supAccountService.queryAccountMaster(accountId);
 
 			// resp the current timestamp of server
-			SyncMyAccountResp respCmd = new SyncMyAccountResp(account, currentTimestamp);
+			SyncMyAccountResp respCmd = new SyncMyAccountResp(sequence, account, currentTimestamp);
 			return respCmd;
 		} catch (Exception e) {
 			logger.error("sessionId=[" + session.getId() + "]|deviceId=[" + this.getMyDeviceId() + "]|accountId=["

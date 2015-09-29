@@ -187,10 +187,12 @@ public class IoSessionAdapter implements IoSession {
 		if (key instanceof String) {
 			String strKey = (String) key;
 			switch (strKey) {
+			case "notifyToken":
 			case "accountId":
 			case "accountName":
 			case "deviceId":
 			case "avatarUrl":
+			case "sessionTicket":
 				// discard key and value, do nothing
 				break;
 			default:
@@ -259,7 +261,7 @@ public class IoSessionAdapter implements IoSession {
 
 	@Override
 	public SocketAddress getRemoteAddress() {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	@Override

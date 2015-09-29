@@ -19,20 +19,15 @@ import com.oct.ga.stp.cmd.StpReqCommand;
 import com.redoct.ga.sup.account.SupAccountService;
 import com.redoct.ga.sup.mail.SupMailService;
 
-public class ForgotPwdAdapter
-		extends StpReqCommand
-{
-	public ForgotPwdAdapter()
-	{
+public class ForgotPwdAdapter extends StpReqCommand {
+	public ForgotPwdAdapter() {
 		super();
 
 		this.setTag(Command.FORGOT_PASSWORD_REQ);
 	}
 
 	@Override
-	public StpReqCommand decode(TlvObject tlv)
-			throws UnsupportedEncodingException
-	{
+	public StpReqCommand decode(TlvObject tlv) throws UnsupportedEncodingException {
 		reqCmd = new ForgotPasswordReq().decode(tlv);
 		this.sequence = reqCmd.getSequence();
 
@@ -40,9 +35,7 @@ public class ForgotPwdAdapter
 	}
 
 	@Override
-	public RespCommand execute(ApplicationContext context)
-			throws Exception
-	{
+	public RespCommand execute(ApplicationContext context) throws Exception {
 		String loginName = reqCmd.getEmail();
 
 		try {
@@ -50,8 +43,7 @@ public class ForgotPwdAdapter
 			SupMailService supMailroom = (SupMailService) context.getBean("supMailroom");
 
 			if (supAccountService.verifyExist(GlobalArgs.ACCOUNT_LOGIN_BY_EMAIL, loginName)) {
-				logger.info("sessionId=[" + session.getId() + "]|deviceId=[" + this.getMyDeviceId() + "]|accountId=["
-						+ this.getMyAccountId() + "]|commandTag=[" + this.getTag() + "]| forgot password");
+				logger.info("sessionId=[" + session.getId() + "]|commandTag=[" + this.getTag() + "]| forgot password");
 
 				String ekey = supAccountService.createEkey(GlobalArgs.ACCOUNT_LOGIN_BY_EMAIL, loginName,
 						currentTimestamp);
@@ -68,8 +60,7 @@ public class ForgotPwdAdapter
 				respCmd.setSequence(sequence);
 				return respCmd;
 			} else {
-				logger.warn("sessionId=[" + session.getId() + "]|deviceId=[" + this.getMyDeviceId() + "]|accountId=["
-						+ this.getMyAccountId() + "]|commandTag=[" + this.getTag() + "]|ErrorCode=["
+				logger.warn("sessionId=[" + session.getId() + "]|commandTag=[" + this.getTag() + "]|ErrorCode=["
 						+ ErrorCode.MEMBER_NOT_GA_ACCOUNT + "]| not ga account");
 
 				ForgotPasswordResp respCmd = new ForgotPasswordResp(ErrorCode.MEMBER_NOT_GA_ACCOUNT);
@@ -77,8 +68,7 @@ public class ForgotPwdAdapter
 				return respCmd;
 			}
 		} catch (Exception e) {
-			logger.error("sessionId=[" + session.getId() + "]|deviceId=[" + this.getMyDeviceId() + "]|accountId=["
-					+ this.getMyAccountId() + "]|commandTag=[" + this.getTag() + "]|ErrorCode=["
+			logger.error("sessionId=[" + session.getId() + "]|commandTag=[" + this.getTag() + "]|ErrorCode=["
 					+ ErrorCode.UNKNOWN_FAILURE + "]|" + LogErrorMessage.getFullInfo(e));
 
 			ForgotPasswordResp respCmd = new ForgotPasswordResp(ErrorCode.UNKNOWN_FAILURE);
