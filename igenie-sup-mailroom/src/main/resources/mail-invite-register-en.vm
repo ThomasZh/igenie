@@ -1,0 +1,18 @@
+Dear ${to-name},
+<p>
+${from-name}(${from-email}) invite you to join ${from-name}'s activities. you may ignore this email or follow next steps to take part in the events hosted by your friend.
+</p>
+<p>
+To download iOS app. click <a href="https://appsto.re/cn/JcMV3.i">DOWNLOAD</a> and follow the instructions to finish installation.
+</p>
+<p>
+To download Android app. click <a href="http://tripc2c-default.b0.upaiyun.com/app/install/Aplan.apk">DOWNLOAD</a> and follow the instructions to finish installation.
+</p>
+<p>
+To 1-click sign up and join. after installtion, open this email on your phone, and tap on device type of your phone to join in.
+	<a href="aplan://signup?ekey=${ekey}">IOS </a> | <a href="aplan://signup?ekey=${ekey}"> Android</a> 
+</p>
+
+<p> Best regards,  </p>
+<p> TripC2C Support </p>
+<p>You may find more information on <a href="http://www.planc2c.com">planc2c website</a> or contact us by sending mailto://support@tripc2c.com.  </p>

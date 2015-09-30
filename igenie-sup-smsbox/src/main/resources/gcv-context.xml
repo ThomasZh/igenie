@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- gcv -->
+	<bean id="globalConfigurationVariables" class="com.redoct.ga.sup.sms.GlobalConfigurationVariables" >
+		<property name="supVersion" value="igenie-sup-sms_v1.1.0" />
+		<property name="supId" value="5309e209-f97e-4c3e-8367-6762d790e238" />
+		<property name="supPort" value="15105" />
+		<property name="bufferSize" value="65535" />
+	</bean>
+
+</beans>

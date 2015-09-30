@@ -31,7 +31,9 @@ public class TlvWrapperController {
 		String sessionId = request.getHeader("X-Session-Id");
 		LOGGER.debug("Session id: {}", sessionId);
 		IoSessionAdapter ioSessionAdapter = new IoSessionAdapter();
-		ioSessionAdapter.setHttpSessionId(sessionId);
+		if (sessionId != null && sessionId.trim().length() > 0) {
+			ioSessionAdapter.setHttpSessionId(sessionId);
+		}
 		TlvObject requestTlvObject = parseFromBody(request);
 		LOGGER.debug("Request received, tag: {}, length: {}", requestTlvObject.getTag(), requestTlvObject.getLength());
 		try {

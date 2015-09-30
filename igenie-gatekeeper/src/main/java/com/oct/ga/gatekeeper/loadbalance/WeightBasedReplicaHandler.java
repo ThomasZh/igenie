@@ -16,13 +16,13 @@ public class WeightBasedReplicaHandler implements ReplicaHandler
 //	            {
 //	                for(int i = lastIndex; i < size + lastIndex; i++)
 //	                {
-//	                    listIter = ++listIter % size;//用于判断是否重新计算当前调度的权值
+//	                    listIter = ++listIter % size;
 //	                    if(listIter == 0)
-//	                        loopCounter = ++loopCounter % maxIter;//当前调度的权值
+//	                        loopCounter = ++loopCounter % maxIter;
 //	                    int j = i % size;
 //	                    if(infoArray[j].getNormalizedWeight() <= loopCounter)
 //	                        continue;
-//	                    remotereference1 = richreplicalist.findReplicaHostedBy(infoArray[j].getID());//大于当前调度的权值
+//	                    remotereference1 = richreplicalist.findReplicaHostedBy(infoArray[j].getID());
 //	                    if(remotereference1 == null)
 //	                        continue;
 //	                    lastIndex = ++j;
@@ -39,8 +39,8 @@ public class WeightBasedReplicaHandler implements ReplicaHandler
 //	    
 //	     void resetAndNormalizeWeights()
 //	    {
-//	        int i = 0x7fffffff; //32位最大整数
-//	        int j = 0x80000000; //32位最小整数
+//	        int i = 0x7fffffff; //32
+//	        int j = 0x80000000; //32
 //	        boolean flag = true;
 //	        synchronized(this)
 //	        {
@@ -50,9 +50,9 @@ public class WeightBasedReplicaHandler implements ReplicaHandler
 //	                int i1 = serverInfoArray[k].getLoadWeight();
 //	                flag &= i1 % 10 == 0;
 //	                if(i > i1)
-//	                    i = i1;   //最小权重，尚未格式化
+//	                    i = i1;   
 //	                if(i1 > j)
-//	                    j = i1;  //最大权重，尚未格式化
+//	                    j = i1;  
 //	            }
 //	            int l = 0;
 //	            if(serverInfoArray.length > 0)

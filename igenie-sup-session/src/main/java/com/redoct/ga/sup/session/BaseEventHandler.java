@@ -162,8 +162,6 @@ public class BaseEventHandler
 		cfg.setWriteTimeout(30);
 		cfg.setTcpNoDelay(false);
 		cfg.setKeepAlive(false);
-		// ���������?MINA�ڵ�����close()�����󣬲����ٽ���TIME_WAIT״̬�ˣ���ֱ��Close���ˣ�
-		// ����Ͳ��������������?TIME_WAIT��״̬�ˡ�
 		cfg.setSoLinger(0);
 
 		cfg.setTcpNoDelay(true);

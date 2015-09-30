@@ -39,7 +39,6 @@ public abstract class EndPoint{
 	
 	
     /**
-     * 关闭channel和connection。并非必须，因为隐含是自动调用的。 
      * @throws IOException
      */
      public void close() throws IOException{

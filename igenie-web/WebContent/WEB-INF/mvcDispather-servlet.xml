@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	
+	<!-- 自动搜索@Controller标注的类 用于指明系统从哪个路径下寻找controller，然后提前初始化这些对象。 -->
+	<context:component-scan base-package="com.oct.ga.admin.mvc" />
+	<mvc:annotation-driven />
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<mvc:resources mapping="/js/**" location="/resources/js/" />
+	<mvc:resources mapping="/themes/**" location="/resources/themes/" />
+	<mvc:resources mapping="/images/**" location="/resources/images/" />
+	<mvc:default-servlet-handler />
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="message">
+	</bean>
+
+	<bean id="handlerExceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.oct.ga.admin.mvc.AuthorizationException">login</prop>
+			</props>
+		</property>
+	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="com.oct.ga.admin.mvc.SecurityInterceptor">
+				<property name="excludedUrls">
+					<list>
+						<value>/</value>
+						<value>/login.htm</value>
+						<value>/resetpwd.htm</value>
+						<value>/resetpwdAction.htm</value>
+						<value>/resetpwdSuccess.htm</value>
+						<value>/invite/activity.htm</value>
+						<value>/member.htm</value>
+						<value>/invite/friend.htm</value>
+						<value>/index.php</value>
+						<value>/Aplan.apk</value>
+						<value>/invite/applySuccess.htm</value>
+						<value>/invite/sendMsgAction.htm</value>
+						<value>/invite/sendMsgSuccess.htm</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<bean id="applicationContextProvider" class="com.oct.ga.admin.mvc.ApplicationContextProvider"></bean>
+	
+</beans>

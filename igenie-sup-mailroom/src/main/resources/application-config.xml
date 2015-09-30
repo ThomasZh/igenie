@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<import resource="gcv-context.xml" />
+	<import resource="mail-context.xml" />
+
+
+	<!-- 这个bean主要是为了得到ApplicationContext 所以它不需要其它属性 -->
+       <bean id="applicationContextUtil" class="com.redoct.ga.sup.mail.ApplicationContextUtil" />
+
+	<!-- mail service -->
+	<bean id="sendCloudClient" class="com.redoct.ga.sup.mail.service.SendCloundClient">
+	</bean>
+	<bean id="supMailService" class="com.redoct.ga.sup.mail.service.SendCloudServiceImpl">
+		<property name="client" ref="sendCloudClient" />
+		<property name="velocityEngine" ref="velocityEngine" />
+	</bean>
+
+	<!-- 
+	<bean id="supMailService" class="com.redoct.ga.sup.mail.service.JavaMailServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+		<property name="velocityEngine" ref="velocityEngine" />
+	</bean>
+ 	-->
+
+</beans>	

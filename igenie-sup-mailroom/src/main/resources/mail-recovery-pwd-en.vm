@@ -1,0 +1,23 @@
+<p>
+Dear ${to-name},
+</p>
+
+<p>
+Someone (hopefully you) has requested a password reset for your A Plan account.  tap on the device type of your mobile below to to open app or web browser to set a new password:
+
+<a href="aplan://resetpwd?ekey=${ekey}"> iOS Device</a> | <a href="aplanreset//resetpwd?ekey=${ekey}"> Android Device</a> | <a href="http://www.planc2c.com/m/resetpwd.htm?ekey=${ekey}"> Web Site</a>
+</p>
+
+<p>
+If you don't wish to reset your password, disregard this email and no action will be taken.
+</p>
+
+<p>
+Best regards, 
+</p>
+<p>
+TripC2C Support
+</p>
+<p>
+You may find more information on <a href="http://www.planc2c.com">TRIPC2C website</a> or contact us by sending mail to: support@tripc2c.com.  
+</p>

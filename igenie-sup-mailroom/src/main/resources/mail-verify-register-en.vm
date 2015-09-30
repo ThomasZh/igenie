@@ -1,0 +1,17 @@
+Dear ${username},
+
+Welcome ${tripc2c-url}
+
+You recently selected ${user-email} as your new TripC2C ID. To verify this email address belongs to you, click the link below and then sign in using your TripC2C ID and password.
+Verify now > ${verify-url}
+
+Why you received this email.
+TripC2C requests verification whenever an email address is selected as an TripC2C ID. Your TripC2C ID cannot be used until you verify it.
+
+If you didn’t make this change or if you believe an unauthorized person is attempting to access your account, you can reset your password by going to My TripC2C ID.
+
+Please contact ${support-email} if you have any questions.
+
+Best regards, 
+
+TripC2C Support

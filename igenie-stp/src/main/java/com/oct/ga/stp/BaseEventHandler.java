@@ -34,13 +34,9 @@ import com.redoct.ga.sup.session.SupSessionService;
  * @author liwenzhi
  * 
  */
-public class BaseEventHandler
-		extends IoHandlerAdapter
-{
+public class BaseEventHandler extends IoHandlerAdapter {
 	@Override
-	public void messageReceived(IoSession session, Object message)
-			throws Exception
-	{
+	public void messageReceived(IoSession session, Object message) throws Exception {
 		if (message instanceof TlvObject && message != null) {
 			long startTime = System.currentTimeMillis();
 			TlvObject pkg = (TlvObject) message;
@@ -71,34 +67,27 @@ public class BaseEventHandler
 			reqCmd.setSession(session);
 
 			// String deviceId = (String) session.getAttribute("deviceId");
-			String deviceId = reqCmd.getMyDeviceId();
+			String deviceId = null;
+			String accountId = null;
+			if (!(session instanceof IoSessionAdapter)) {
+				deviceId = reqCmd.getMyDeviceId();
+				accountId = reqCmd.getMyAccountId();
+			}
 			/**
 			 * Illegal request!!! logic place here is waiting for command above
 			 * set account id
 			 */
-			if (tag != Command.REGISTER_REQ 
-					&& tag != Command.LOGIN_REQ 
-					&& tag != Command.SSO_LOGIN_REQ
-					&& tag != Command.REGISTER_LOGIN_REQ 
-					&& tag != Command.STP_ARQ
-					&& tag != Command.QUERY_FORGOT_PASSWORD_EMAIL_REQ
-					&& tag != Command.RESET_PASSWORD_REQ 
-					&& tag != Command.FORGOT_PASSWORD_REQ
-					&& tag != Command.INVITE_QUERY_REGISTER_SEMIID_REQ 
-					&& tag != Command.CHECK_VERSION_UPGRADE_REQ
-					&& tag != Command.MODIFY_SUP_STATE_REQ 
-					&& tag != Command.HEARTBIT_REQ
-					&& tag != Command.APPLY_PHONE_REGISTER_VERIFICATION_CODE_REQ
-					&& tag != Command.PHONE_REGISTER_LOGIN_REQ 
-					&& tag != Command.DEVICE_REGISTER_LOGIN_REQ 
-						&& tag != Command.INLINECAST_ACTIVITY_JOIN_REQ
-						&& tag != Command.INLINECAST_APPLY_STATE_REQ 
-						&& tag != Command.INLINECAST_INVITE_FEEDBACK_REQ
-						&& tag != Command.INLINECAST_INVITE_REQ
-						&& tag != Command.INLINECAST_MESSAGE_REQ
-						&& tag != Command.INLINECAST_TASK_ACTIVITY_REQ
-						&& tag != Command.INLINECAST_TASK_LOG_REQ
-					&& deviceId == null) {
+			if (!(session instanceof IoSessionAdapter) && tag != Command.REGISTER_REQ && tag != Command.LOGIN_REQ
+					&& tag != Command.SSO_LOGIN_REQ && tag != Command.REGISTER_LOGIN_REQ && tag != Command.STP_ARQ
+					&& tag != Command.QUERY_FORGOT_PASSWORD_EMAIL_REQ && tag != Command.RESET_PASSWORD_REQ
+					&& tag != Command.FORGOT_PASSWORD_REQ && tag != Command.INVITE_QUERY_REGISTER_SEMIID_REQ
+					&& tag != Command.CHECK_VERSION_UPGRADE_REQ && tag != Command.MODIFY_SUP_STATE_REQ
+					&& tag != Command.HEARTBIT_REQ && tag != Command.APPLY_PHONE_REGISTER_VERIFICATION_CODE_REQ
+					&& tag != Command.PHONE_REGISTER_LOGIN_REQ && tag != Command.DEVICE_REGISTER_LOGIN_REQ
+					&& tag != Command.INLINECAST_ACTIVITY_JOIN_REQ && tag != Command.INLINECAST_APPLY_STATE_REQ
+					&& tag != Command.INLINECAST_INVITE_FEEDBACK_REQ && tag != Command.INLINECAST_INVITE_REQ
+					&& tag != Command.INLINECAST_MESSAGE_REQ && tag != Command.INLINECAST_TASK_ACTIVITY_REQ
+					&& tag != Command.INLINECAST_TASK_LOG_REQ && deviceId == null) {
 				long endTime = System.currentTimeMillis();
 				long deltaTime = endTime - startTime;
 
@@ -115,9 +104,9 @@ public class BaseEventHandler
 			try {
 				respCmd = reqCmd.execute(context);
 			} catch (Exception e) {
-				logger.error("sessionId=[" + session.getId() + "]|deviceId=[" + deviceId + "]|accountId=["
-						+ reqCmd.getMyAccountId() + "]|commandTag=[" + tag + "]|ErrorCode=["
-						+ ErrorCode.UNKNOWN_FAILURE + "]" + LogErrorMessage.getFullInfo(e));
+				logger.error("sessionId=[" + session.getId() + "]|deviceId=[" + deviceId + "]|accountId=[" + accountId
+						+ "]|commandTag=[" + tag + "]|ErrorCode=[" + ErrorCode.UNKNOWN_FAILURE + "]"
+						+ LogErrorMessage.getFullInfo(e));
 			}
 
 			if (respCmd != null) {
@@ -126,8 +115,8 @@ public class BaseEventHandler
 					tResp = StpCommandParser.encode(respCmd);
 				} catch (Exception e) {
 					logger.error("sessionId=[" + session.getId() + "]|deviceId=[" + deviceId + "]|accountId=["
-							+ reqCmd.getMyAccountId() + "]|commandTag=[" + tag + "]|ErrorCode=["
-							+ ErrorCode.ENCODING_FAILURE + "]" + LogErrorMessage.getFullInfo(e));
+							+ accountId + "]|commandTag=[" + tag + "]|ErrorCode=[" + ErrorCode.ENCODING_FAILURE + "]"
+							+ LogErrorMessage.getFullInfo(e));
 				}
 
 				WriteFuture future = session.write(tResp);
@@ -138,8 +127,7 @@ public class BaseEventHandler
 					// The messsage couldn't be written out completely for
 					// some reason. (e.g. Connection is closed)
 					logger.warn("sessionId=[" + session.getId() + "]|deviceId=[" + deviceId + "]|accountId=["
-							+ reqCmd.getMyAccountId() + "]|commandTag=[" + tag + "]|ErrorCode=["
-							+ ErrorCode.CONNECTION_CLOSED
+							+ accountId + "]|commandTag=[" + tag + "]|ErrorCode=[" + ErrorCode.CONNECTION_CLOSED
 							+ "]|couldn't be written out resp completely for some reason.(e.g. Connection is closed)");
 
 					session.close(true);
@@ -147,16 +135,13 @@ public class BaseEventHandler
 			}
 			long endTime = System.currentTimeMillis();
 			long deltaTime = endTime - startTime;
-			logger.info("sessionId=[" + session.getId() + "]|deviceId=[" + reqCmd.getMyDeviceId() + "]|accountId=["
-					+ reqCmd.getMyAccountId() + "]|commandTag=[" + reqCmd.getTag() + "]|execute(" + deltaTime
-					+ "ms) command end.");
-		}// end of if
+			logger.info("sessionId=[" + session.getId() + "]|deviceId=[" + deviceId + "]|accountId=[" + accountId
+					+ "]|commandTag=[" + reqCmd.getTag() + "]|execute(" + deltaTime + "ms) command end.");
+		} // end of if
 	}
 
 	@Override
-	public void sessionOpened(IoSession session)
-			throws Exception
-	{
+	public void sessionOpened(IoSession session) throws Exception {
 		super.sessionOpened(session);
 
 		SocketAddress rsa = session.getRemoteAddress();
@@ -164,9 +149,7 @@ public class BaseEventHandler
 	}
 
 	@Override
-	public void exceptionCaught(IoSession session, Throwable cause)
-			throws Exception
-	{
+	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
 		super.exceptionCaught(session, cause);
 
 		// if (cause != null)
@@ -174,9 +157,7 @@ public class BaseEventHandler
 	}
 
 	@Override
-	public void sessionClosed(IoSession session)
-			throws Exception
-	{
+	public void sessionClosed(IoSession session) throws Exception {
 		super.sessionClosed(session);
 
 		String accountId = (String) session.getAttribute("accountId");
@@ -195,9 +176,7 @@ public class BaseEventHandler
 	}
 
 	@Override
-	public void sessionIdle(IoSession session, IdleStatus status)
-			throws Exception
-	{
+	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		if (status == IdleStatus.BOTH_IDLE) {
 			// SocketAddress rsa = session.getRemoteAddress();
 			logger.info("sessionId=[" + session.getId() + "]|session both(in/out) idle!");
@@ -206,9 +185,7 @@ public class BaseEventHandler
 	}
 
 	@Override
-	public void sessionCreated(IoSession session)
-			throws Exception
-	{
+	public void sessionCreated(IoSession session) throws Exception {
 		super.sessionCreated(session);
 
 		// Empty handler

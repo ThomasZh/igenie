@@ -3,8 +3,6 @@ package com.oct.ga.comm.domain.apply;
 import com.oct.ga.comm.domain.JsonBeanAdapter;
 
 /**
- * 申请人信息单元
- * 
  * @author thomas
  */
 public class GaApplicantCell

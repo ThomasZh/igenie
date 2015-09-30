@@ -11,7 +11,7 @@ public class BasicReplicaHandler implements ReplicaHandler
 //        int i = replicaList.size();
 //        if(i == 0)
 //            return remotereference;
-//        current = (current + 1) % i;//选下一个
+//        current = (current + 1) % i;
 //        replicaList.get(current);
 //        replicalist;
 //        //JVM INSTR monitorexit ;

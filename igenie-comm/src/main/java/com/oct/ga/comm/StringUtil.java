@@ -54,9 +54,7 @@ public class StringUtil
 	}
 
 	/**
-	 * 获得6位随机数验证码
-	 * 
-	 * @return 验证码
+	 * get random 6 number
 	 */
 	public static String random6num()
 	{
