@@ -3,3 +3,5 @@ RemoteSystemsTempFiles/
 .gradle/
 .recommenders/
 spring-test/
+.DS_Store
+
