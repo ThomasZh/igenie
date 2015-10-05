@@ -22,4 +22,6 @@ include 'igenie-comm',
 
         'igenie-monitor',
 		
-		'ga-stp-http'
+        'ga-stp-http',
+
+        'igenie-sup-activity'

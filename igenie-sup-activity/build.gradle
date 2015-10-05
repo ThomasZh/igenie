@@ -1,0 +1,76 @@
+
+//--------- get parameter value from command line input 
+//--------- save a project level property for plug use
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    project.ext.set("environment", environment)
+    project.ext.set("distVersion", "1.0.0")//distribution version number
+}
+
+//----------------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin:'application'
+apply from: 'tasks.gradle'
+
+group = 'igeniesup'
+version = project.distVersion
+mainClassName = "com.oct.ga.stp.StpServer"
+
+
+processResources.dependsOn copyConfiguration
+installApp.dependsOn modscript
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'sup activity', 'Implementation-Version': version
+    }
+
+    exclude '*.properties'   
+    exclude '*.xml'
+    exclude '*.p12'
+    exclude '*.list'   
+}
+
+repositories {
+   mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+//        resources {
+//            srcDir 'conf'
+//        }
+    }
+     
+}
+
+
+dependencies {
+
+	compile project(':igenie-gatekeeper')
+	
+	compile fileTree(dir: 'lib', include: '*.jar')
+    
+	compile 'junit:junit:4.11'
+
+    compile 'org.apache.commons:commons-email:1.3.2'
+    compile 'org.springframework:spring-context:4.2.1.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
+    
+	compile 'org.slf4j:slf4j-log4j12:1.6.6'
+    //compile 'c3p0:c3p0:0.9.1.2'
+    compile 'com.mchange:c3p0:0.9.5-pre8'
+    
+    compile 'mysql:mysql-connector-java:5.1.33'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
