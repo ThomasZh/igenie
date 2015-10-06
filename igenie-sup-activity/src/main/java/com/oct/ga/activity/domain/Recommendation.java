@@ -4,9 +4,8 @@ public class Recommendation {
 	private String id;// TODO modify db
 	private String activityId;
 	private String fromAccountId;
-	private int rank;
 	private String toAccountId;
-	private int createTime;
+	private long createTime;
 	private String content;
 
 	public String getId() {
@@ -33,14 +32,6 @@ public class Recommendation {
 		this.fromAccountId = fromAccountId;
 	}
 
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
 	public String getToAccountId() {
 		return toAccountId;
 	}
@@ -49,11 +40,11 @@ public class Recommendation {
 		this.toAccountId = toAccountId;
 	}
 
-	public int getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 

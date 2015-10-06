@@ -3,8 +3,9 @@ package com.oct.ga.activity.domain;
 public class RecommendedAct {
 	private String activityId;
 	private String accountId;
-	private int createTime;
-	private int lastUpdateTime;
+	private long createTime;
+	private long lastUpdateTime;
+	private long beginTime;// TODO
 
 	public String getActivityId() {
 		return activityId;
@@ -22,20 +23,27 @@ public class RecommendedAct {
 		this.accountId = accountId;
 	}
 
-	public int getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 
-	public int getLastUpdateTime() {
+	public long getLastUpdateTime() {
 		return lastUpdateTime;
 	}
 
-	public void setLastUpdateTime(int lastUpdateTime) {
+	public void setLastUpdateTime(long lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
+	public long getBeginTime() {
+		return beginTime;
+	}
+
+	public void setBeginTime(long beginTime) {
+		this.beginTime = beginTime;
+	}
 }

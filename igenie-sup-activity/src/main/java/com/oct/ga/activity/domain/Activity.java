@@ -3,21 +3,19 @@ package com.oct.ga.activity.domain;
 public class Activity {
 	private String id;
 	private String name;
-	private String desc;// FIXME
-	private int beginTime;
-	private int endTime;
+	private long beginTime;
+	private long endTime;
 	private String bgImageUrl;
-	private int createTime;
-	private int lastUpdateTime;
+	private long createTime;
+	private long lastUpdateTime;
 	private int status;
 	private int type;
 	private String location;
 	private String geoX;
 	private String geoY;
 	private boolean applyInfoRequire;
-	private int applyCloseTime;
+	private long applyCloseTime;
 	private int memberNum;
-	private String leaderId;// TODO
 
 	public String getId() {
 		return id;
@@ -35,27 +33,19 @@ public class Activity {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public int getBeginTime() {
+	public long getBeginTime() {
 		return beginTime;
 	}
 
-	public void setBeginTime(int beginTime) {
+	public void setBeginTime(long beginTime) {
 		this.beginTime = beginTime;
 	}
 
-	public int getEndTime() {
+	public long getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(int endTime) {
+	public void setEndTime(long endTime) {
 		this.endTime = endTime;
 	}
 
@@ -67,19 +57,19 @@ public class Activity {
 		this.bgImageUrl = bgImageUrl;
 	}
 
-	public int getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 
-	public int getLastUpdateTime() {
+	public long getLastUpdateTime() {
 		return lastUpdateTime;
 	}
 
-	public void setLastUpdateTime(int lastUpdateTime) {
+	public void setLastUpdateTime(long lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
@@ -131,11 +121,11 @@ public class Activity {
 		this.applyInfoRequire = applyInfoRequire;
 	}
 
-	public int getApplyCloseTime() {
+	public long getApplyCloseTime() {
 		return applyCloseTime;
 	}
 
-	public void setApplyCloseTime(int applyCloseTime) {
+	public void setApplyCloseTime(long applyCloseTime) {
 		this.applyCloseTime = applyCloseTime;
 	}
 

@@ -9,5 +9,5 @@ public interface RecommendationDao {
 
 	boolean delete(String id);
 
-	List<Recommendation> find(String toAccountId, int rank, int createTime, boolean prev, int pageSize);
+	List<Recommendation> findByActivityId(String activityId);
 }

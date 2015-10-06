@@ -17,7 +17,36 @@ import com.oct.ga.activity.domain.Recommendation;
 
 @Repository
 public class RecommendationDaoImpl extends JdbcDaoSupport implements RecommendationDao {
-	private static final RowMapper<Recommendation> ROW_MAPPER = new RowMapper<Recommendation>() {
+
+	@Override
+	public void create(Recommendation recommendation) {
+		recommendation.setId(Util.generateUUID());
+		recommendation.setCreateTime(System.currentTimeMillis());
+		String sql = "insert into APLAN_RECOMMENDATION"
+				+ " (ID_, ACTIVITY_ID, FROM_ACCOUNT_ID, TO_ACCOUNT_ID, CONTENT, CREATE_TIME)"
+				+ " values (?, ?, ?, ?, ?, ?, ?)";
+		getJdbcTemplate().update(sql, recommendation.getId(), recommendation.getActivityId(),
+				recommendation.getFromAccountId(), recommendation.getToAccountId(), recommendation.getContent(),
+				recommendation.getCreateTime());
+	}
+
+	@Override
+	public boolean delete(String id) {
+		return getJdbcTemplate().update("delete from APLAN_RECOMMENDATION where ID_ = ?", id) > 0;
+	}
+
+	@Override
+	public List<Recommendation> findByActivityId(String activityId) {
+		String sql = "select * from APLAN_RECOMMENDATION where ACTIVITY_ID = ?";
+		return getJdbcTemplate().query(sql, new RowMapperImpl(), activityId);
+	}
+
+	@Autowired
+	public void setGaDataSource(@Qualifier("gaDataSource") DataSource dataSource) {
+		setDataSource(dataSource);
+	}
+
+	private class RowMapperImpl implements RowMapper<Recommendation> {
 
 		@Override
 		public Recommendation mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -26,40 +55,11 @@ public class RecommendationDaoImpl extends JdbcDaoSupport implements Recommendat
 			recommendation.setActivityId(rs.getString("ACTIVITY_ID"));
 			recommendation.setFromAccountId(rs.getString("FROM_ACCOUNT_ID"));
 			recommendation.setToAccountId(rs.getString("TO_ACCOUNT_ID"));
-			recommendation.setRank(rs.getInt("RANK"));
 			recommendation.setContent(rs.getString("CONTENT"));
-			recommendation.setCreateTime(rs.getInt("CREATE_TIME"));
+			recommendation.setCreateTime(rs.getLong("CREATE_TIME"));
 			return recommendation;
 		}
-	};
 
-	@Override
-	public void create(Recommendation recommendation) {
-		recommendation.setId(Util.generateUUID());
-		recommendation.setCreateTime(Util.currentTimeSeconds());
-		String sql = "insert into RECOMMENDATION"
-				+ " (ID_, ACTIVITY_ID, FROM_ACCOUNT_ID, TO_ACCOUNT_ID, CONTENT, RANK, CREATE_TIME)"
-				+ " values (?, ?, ?, ?, ?, ?, ?)";
-		getJdbcTemplate().update(sql, recommendation.getId(), recommendation.getActivityId(),
-				recommendation.getFromAccountId(), recommendation.getToAccountId(), recommendation.getContent(),
-				recommendation.getRank(), recommendation.getCreateTime());
-	}
-
-	@Override
-	public boolean delete(String id) {
-		return getJdbcTemplate().update("delete from RECOMMENDATION where ID_ = ?", id) > 0;
-	}
-
-	@Override
-	public List<Recommendation> find(String toAccountId, int rank, int createTime, boolean prev, int pageSize) {
-		String sql = "select * from RECOMMENDATION where TO_ACCOUNT_ID = ? and RANK = ? and CREATE_TIME"
-				+ (prev ? " >" : " <") + " ? order by CREATE_TIME desc limit 0, ?";
-		return getJdbcTemplate().query(sql, ROW_MAPPER, toAccountId, rank, createTime, pageSize);
-	}
-
-	@Autowired
-	public void setGaDataSource(@Qualifier("gaDataSource") DataSource dataSource) {
-		setDataSource(dataSource);
 	}
 
 }

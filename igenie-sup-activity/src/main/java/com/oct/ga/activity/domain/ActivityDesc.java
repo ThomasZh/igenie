@@ -2,12 +2,12 @@ package com.oct.ga.activity.domain;
 
 import java.util.List;
 
-public class Desc {
+public class ActivityDesc {
 	private String id;
 	private String activityId;
 	private String title;
 	private List<DescContent> contents;
-	private int createTime;
+	private long createTime;
 	private int idx;
 
 	public String getId() {
@@ -42,11 +42,11 @@ public class Desc {
 		this.contents = contents;
 	}
 
-	public int getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 
