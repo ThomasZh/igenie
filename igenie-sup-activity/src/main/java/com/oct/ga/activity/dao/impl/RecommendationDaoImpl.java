@@ -21,7 +21,7 @@ public class RecommendationDaoImpl extends JdbcDaoSupport implements Recommendat
 	@Override
 	public void create(Recommendation recommendation) {
 		recommendation.setId(Util.generateUUID());
-		recommendation.setCreateTime(System.currentTimeMillis());
+		recommendation.setCreateTime(Util.currentTimeMillis());
 		String sql = "insert into APLAN_RECOMMENDATION"
 				+ " (ID_, ACTIVITY_ID, FROM_ACCOUNT_ID, TO_ACCOUNT_ID, CONTENT, CREATE_TIME)"
 				+ " values (?, ?, ?, ?, ?, ?, ?)";

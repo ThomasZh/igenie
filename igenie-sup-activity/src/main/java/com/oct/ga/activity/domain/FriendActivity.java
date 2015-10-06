@@ -1,10 +1,10 @@
 package com.oct.ga.activity.domain;
 
-public class ActivityMember {
+public class FriendActivity {
 	private String activityId;
 	private String accountId;
-	private long beginTime;
-	private int rank;
+	private String friendAccoundId;
+	private long beginTime;// TODO
 	private long createTime;
 
 	public String getActivityId() {
@@ -23,20 +23,20 @@ public class ActivityMember {
 		this.accountId = accountId;
 	}
 
+	public String getFriendAccoundId() {
+		return friendAccoundId;
+	}
+
+	public void setFriendAccoundId(String friendAccoundId) {
+		this.friendAccoundId = friendAccoundId;
+	}
+
 	public long getBeginTime() {
 		return beginTime;
 	}
 
 	public void setBeginTime(long beginTime) {
 		this.beginTime = beginTime;
-	}
-
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
 	}
 
 	public long getCreateTime() {

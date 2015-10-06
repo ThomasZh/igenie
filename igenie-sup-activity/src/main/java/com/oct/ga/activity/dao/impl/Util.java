@@ -28,6 +28,10 @@ public class Util {
 		return (int) (System.currentTimeMillis() / 1000);
 	}
 
+	public static long currentTimeMillis() {
+		return System.currentTimeMillis();
+	}
+
 	public static Blob toBlob(String s) throws SerialException, SQLException {
 		Blob blob = null;
 		if (s != null && s.length() > 0) {

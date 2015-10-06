@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import com.oct.ga.activity.dao.ActivityDao;
 import com.oct.ga.activity.domain.Activity;
 
+@Repository
 public class ActivityDaoImpl extends JdbcDaoSupport implements ActivityDao {
 
 	@Override
@@ -21,9 +23,9 @@ public class ActivityDaoImpl extends JdbcDaoSupport implements ActivityDao {
 				+ " LOCATION, GEO_X, GEO_Y, APPLY_INFO_REQUIRE, APPLY_CLOSE_TIME, MEMBER_NUM,"
 				+ " CREATE_TIME, LAST_UPDATE_TIME)";
 		activity.setId(Util.generateUUID());
-		int currentTimeSeconds = Util.currentTimeSeconds();
-		activity.setCreateTime(currentTimeSeconds);
-		activity.setLastUpdateTime(currentTimeSeconds);
+		long currentTimeMillis = Util.currentTimeMillis();
+		activity.setCreateTime(currentTimeMillis);
+		activity.setLastUpdateTime(currentTimeMillis);
 		getJdbcTemplate().update(sql, activity.getId(), activity.getName(), activity.getBeginTime(),
 				activity.getEndTime(), activity.getBgImageUrl(), activity.getStatus(), activity.getType(),
 				activity.getLocation(), activity.getGeoX(), activity.getGeoY(), activity.isApplyInfoRequire(),
@@ -38,6 +40,13 @@ public class ActivityDaoImpl extends JdbcDaoSupport implements ActivityDao {
 		int count = getJdbcTemplate().update(sql, activity.getName(), activity.getBeginTime(), activity.getEndTime(),
 				activity.getBgImageUrl(), activity.getLocation(), activity.getGeoX(), activity.getGeoY(),
 				activity.isApplyInfoRequire(), activity.getApplyCloseTime(), activity.getId());
+		return count > 0;
+	}
+
+	@Override
+	public boolean updateMemberNum(String id, int memberNum) {
+		String sql = "update APLAN_ACTIVITY set MEMBER_NUM = ? where ID_ = ?";
+		int count = getJdbcTemplate().update(sql, memberNum, id);
 		return count > 0;
 	}
 

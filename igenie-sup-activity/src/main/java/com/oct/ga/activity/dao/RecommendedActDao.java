@@ -11,5 +11,5 @@ public interface RecommendedActDao {
 
 	boolean update(String accountId, String activityId, long lastUpdateTime);
 
-	List<RecommendedAct> find(String accountId, long beginTime, long lastUpdateTime, boolean prev, int pageSize);
+	List<RecommendedAct> find(String accountId, long beginTime, boolean prev, int pageSize);
 }

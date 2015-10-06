@@ -1,11 +1,14 @@
 package com.oct.ga.activity.domain;
 
+import java.util.List;
+
 public class Moment {
 	private String id;
+	private String activityId;// TODO modify db
 	private String accountId;
 	private String desc;
-	private int createTime;
-	private String imageUrls;
+	private long createTime;
+	private List<String> imageUrls;
 	private int commentNum;
 	private int likeNum;
 
@@ -15,6 +18,14 @@ public class Moment {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(String activityId) {
+		this.activityId = activityId;
 	}
 
 	public String getAccountId() {
@@ -33,19 +44,19 @@ public class Moment {
 		this.desc = desc;
 	}
 
-	public int getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 
-	public String getImageUrls() {
+	public List<String> getImageUrls() {
 		return imageUrls;
 	}
 
-	public void setImageUrls(String imageUrls) {
+	public void setImageUrls(List<String> imageUrls) {
 		this.imageUrls = imageUrls;
 	}
 

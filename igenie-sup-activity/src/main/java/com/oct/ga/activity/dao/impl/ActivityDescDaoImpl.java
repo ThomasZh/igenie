@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import com.oct.ga.activity.dao.ActivityDescDao;
 import com.oct.ga.activity.domain.ActivityDesc;
 import com.oct.ga.activity.domain.DescContent;
 
+@Repository
 public class ActivityDescDaoImpl extends JdbcDaoSupport implements ActivityDescDao {
 
 	@Override
@@ -22,7 +24,7 @@ public class ActivityDescDaoImpl extends JdbcDaoSupport implements ActivityDescD
 		String sql = "insert into APLAN_ACTIVITY_DESC (ID_, ACTIVITY_ID, TITLE, CONTENTS, IDX, CREATE_TIME) values"
 				+ " (?, ?, ?, ?, ?, ?)";
 		desc.setId(Util.generateUUID());
-		desc.setCreateTime(Util.currentTimeSeconds());
+		desc.setCreateTime(Util.currentTimeMillis());
 		getJdbcTemplate().update(sql, desc.getId(), desc.getActivityId(), desc.getTitle(),
 				Util.toJson(desc.getContents()), desc.getIdx(), desc.getCreateTime());
 	}

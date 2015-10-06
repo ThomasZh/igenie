@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import com.oct.ga.activity.dao.RecommendedActDao;
 import com.oct.ga.activity.domain.RecommendedAct;
 
+@Repository
 public class RecommendedActDaoImpl extends JdbcDaoSupport implements RecommendedActDao {
 
 	@Override
@@ -38,13 +40,11 @@ public class RecommendedActDaoImpl extends JdbcDaoSupport implements Recommended
 	}
 
 	@Override
-	public List<RecommendedAct> find(String accountId, long beginTime, long lastUpdateTime, boolean prev,
-			int pageSize) {
-		String compareOperator = prev ? "<" : ">";
+	public List<RecommendedAct> find(String accountId, long beginTime, boolean prev, int pageSize) {
+		String compareOperator = prev ? ">" : "<";
 		String sql = "select * from APLAN_RECOMMENDED_ACT where ACCOUNT_ID = ? and BEGIN_TIME " + compareOperator
-				+ " ? and LAST_UPDATE_TIME " + compareOperator
-				+ " ? order by BEGIN_TIME desc, LAST_UPDATE_TIME desc limit 0, ?";
-		return getJdbcTemplate().query(sql, new RowMapperImpl(), accountId, beginTime, lastUpdateTime, pageSize);
+				+ " ? order by BEGIN_TIME desc limit 0, ?";
+		return getJdbcTemplate().query(sql, new RowMapperImpl(), accountId, beginTime, pageSize);
 	}
 
 	@Autowired

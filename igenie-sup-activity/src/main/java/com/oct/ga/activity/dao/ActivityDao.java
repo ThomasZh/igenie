@@ -12,4 +12,6 @@ public interface ActivityDao {
 
 	Activity read(String id);
 
+	boolean updateMemberNum(String id, int memberNum);
+
 }
