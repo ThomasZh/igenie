@@ -54,6 +54,7 @@ dependencies {
 	compile project(':igenie-stp-base')
 	compile project(':igenie-stp')
 	compile project(':igenie-gatekeeper')
+	compile project(':igenie-sup-activity')
 	
 	compile fileTree(dir: 'lib', include: '*.jar')
     

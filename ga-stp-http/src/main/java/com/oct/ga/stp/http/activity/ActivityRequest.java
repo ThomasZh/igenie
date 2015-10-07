@@ -1,31 +1,16 @@
-package com.oct.ga.activity.domain;
+package com.oct.ga.stp.http.activity;
 
-public class Activity {
-	private String id;
+public class ActivityRequest {
 	private String name;
 	private long beginTime;
 	private long endTime;
 	private String bgImageUrl;
-	private long createTime;
-	private long lastUpdateTime;
-	private int status;
 	private int type;
 	private String location;
 	private String geoX;
 	private String geoY;
 	private boolean applyInfoRequire;
 	private long applyCloseTime;
-	private int memberNum;
-	// related entities
-	private ActivityMember leader;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -57,30 +42,6 @@ public class Activity {
 
 	public void setBgImageUrl(String bgImageUrl) {
 		this.bgImageUrl = bgImageUrl;
-	}
-
-	public long getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(long createTime) {
-		this.createTime = createTime;
-	}
-
-	public long getLastUpdateTime() {
-		return lastUpdateTime;
-	}
-
-	public void setLastUpdateTime(long lastUpdateTime) {
-		this.lastUpdateTime = lastUpdateTime;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 	public int getType() {
@@ -129,22 +90,6 @@ public class Activity {
 
 	public void setApplyCloseTime(long applyCloseTime) {
 		this.applyCloseTime = applyCloseTime;
-	}
-
-	public int getMemberNum() {
-		return memberNum;
-	}
-
-	public void setMemberNum(int memberNum) {
-		this.memberNum = memberNum;
-	}
-
-	public ActivityMember getLeader() {
-		return leader;
-	}
-
-	public void setLeader(ActivityMember leader) {
-		this.leader = leader;
 	}
 
 }

@@ -47,4 +47,8 @@ public class ActivityMember {
 		this.createTime = createTime;
 	}
 
+	public boolean isLeader() {
+		return rank == ActivityConstants.ACTIVITY_MEMBER_RANK_LEADER;
+	}
+
 }

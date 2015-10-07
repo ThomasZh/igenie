@@ -13,5 +13,7 @@ public interface ActivityMemberDao {
 
 	List<ActivityMember> findByActivityId(String activityId, long createTime, int pageSize);
 
+	ActivityMember getLeader(String activityId);
+
 	int countActivityMembersByActivityId(String activityId);
 }

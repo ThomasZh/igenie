@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.oct.ga.activity.dao.ActivityMemberDao;
+import com.oct.ga.activity.domain.ActivityConstants;
 import com.oct.ga.activity.domain.ActivityMember;
 
 @Repository
@@ -44,6 +45,13 @@ public class ActivityMemberDaoImpl extends JdbcDaoSupport implements ActivityMem
 	public List<ActivityMember> findByActivityId(String activityId, long createTime, int pageSize) {
 		String sql = "select * from APLAN_ACTIVITY_MEMBER where ACTIVITY_ID = ? and CREATE_TIME > ? order by CREATE_TIME asc limit 0, ?";
 		return getJdbcTemplate().query(sql, new RowMapperImpl(), activityId, createTime, pageSize);
+	}
+
+	@Override
+	public ActivityMember getLeader(String activityId) {
+		String sql = "select * from APLAN_ACTIVITY_MEMBER where ACTIVITY_ID = ? and RANK = ?";
+		return getJdbcTemplate().queryForObject(sql, new RowMapperImpl(), activityId,
+				ActivityConstants.ACTIVITY_MEMBER_RANK_LEADER);
 	}
 
 	@Override
