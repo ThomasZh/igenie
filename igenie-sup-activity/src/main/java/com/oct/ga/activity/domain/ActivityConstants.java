@@ -8,4 +8,9 @@ public interface ActivityConstants {
 	int ACTIVITY_TYPE_PRIVATE = 2;
 
 	int ACTIVITY_STATUS_UNPUBLISHED = 1;
+
+	int ITINERARY_TYPE_GEO = 1;
+	int ITINERARY_TYPE_ROUTE = 2;
+	int ITINERARY_TYPE_DAY = 3;
+	int ITINERARY_TYPE_EQUIPMENT = 4;
 }
