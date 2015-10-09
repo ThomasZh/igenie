@@ -7,7 +7,10 @@ import org.restexpress.Response;
 import org.restexpress.exception.BadRequestException;
 import org.restexpress.exception.UnauthorizedException;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cglib.beans.BeanCopier;
 
+import com.oct.ga.activity.domain.RouteItinerary;
+import com.oct.ga.stp.http.activity.ItineraryResponse;
 import com.oct.ga.stp.http.common.Header;
 
 public class Utils {
@@ -101,4 +104,14 @@ public class Utils {
 			}
 		}
 	}
+
+	public static void main(String... args) {
+		RouteItinerary routeItinerary = new RouteItinerary();
+		routeItinerary.setBeginTime(1);
+		ItineraryResponse itineraryResponse = new ItineraryResponse();
+		
+		BeanUtils.copyProperties(routeItinerary, itineraryResponse);
+		System.out.println();
+	}
+
 }
